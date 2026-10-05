@@ -1,0 +1,11 @@
+{
+  "commit": "25ad11e4ff672b1eca69d6eeff109ce11bbb663d",
+  "sources": {
+    "C.g4": "https://github.com/antlr/grammars-v4/blob/25ad11e4ff672b1eca69d6eeff109ce11bbb663d/c/C.g4",
+    "Java20Lexer.g4": "https://github.com/antlr/grammars-v4/blob/25ad11e4ff672b1eca69d6eeff109ce11bbb663d/java/java20/Java20Lexer.g4"
+  },
+  "sha256": {
+    "C.g4": "263d06316ee22459b93ac85b6aa63b861a1ad47eaade8fea9ffe5a254a8de281",
+    "Java20Lexer.g4": "e5ea0870667a84a250858486ccf3d158930767910ed214256a942797f39d913f"
+  }
+}

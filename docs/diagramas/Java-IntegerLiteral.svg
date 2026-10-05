@@ -1,0 +1,40 @@
+<svg class="railroad-diagram" height="152" viewBox="0 0 318.5 152" width="318.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M278.5 31h0.0" /><path d="M40.0 31h20" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M258.5 31h0.0" /><rect height="22" width="198.5" x="60" y="20"></rect><a xlink:href="atlas.html#Java-DecimalIntegerLiteral"><text x="159.25" y="35">DecimalIntegerLiteral</text><text x="159.25" y="35">DecimalIntegerLiteral</text></a></g><path d="M258.5 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 61h17.0" /><path d="M241.5 61h17.0" /><rect height="22" width="164.5" x="77" y="50"></rect><a xlink:href="atlas.html#Java-HexIntegerLiteral"><text x="159.25" y="65">HexIntegerLiteral</text><text x="159.25" y="65">HexIntegerLiteral</text></a></g><path d="M258.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 91h8.5" /><path d="M250.0 91h8.5" /><rect height="22" width="181.5" x="68.5" y="80"></rect><a xlink:href="atlas.html#Java-OctalIntegerLiteral"><text x="159.25" y="95">OctalIntegerLiteral</text><text x="159.25" y="95">OctalIntegerLiteral</text></a></g><path d="M258.5 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v70a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 121h4.25" /><path d="M254.25 121h4.25" /><rect height="22" width="190" x="64.25" y="110"></rect><a xlink:href="atlas.html#Java-BinaryIntegerLiteral"><text x="159.25" y="125">BinaryIntegerLiteral</text><text x="159.25" y="125">BinaryIntegerLiteral</text></a></g><path d="M258.5 121a10 10 0 0 0 10 -10v-70a10 10 0 0 1 10 -10" /></g><path d="M 278.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>

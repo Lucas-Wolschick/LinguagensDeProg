@@ -1,0 +1,502 @@
+[
+  {
+    "id": "C01",
+    "language": "C",
+    "rule": "StringLiteral",
+    "input": "u8\"Olá, mundo!\"",
+    "accepted": true,
+    "reason": "Prefixo u8 permitido antes das aspas.",
+    "group": "principal"
+  },
+  {
+    "id": "C02",
+    "language": "C",
+    "rule": "StringLiteral",
+    "input": "\"linha\\x41\"",
+    "accepted": true,
+    "reason": "Escape hexadecimal com um ou mais dígitos hexadecimais.",
+    "group": "principal"
+  },
+  {
+    "id": "C03",
+    "language": "C",
+    "rule": "StringLiteral",
+    "input": "\"texto\\q\"",
+    "accepted": false,
+    "reason": "Não existe escape \\q: o lexer informa erro léxico.",
+    "group": "principal"
+  },
+  {
+    "id": "C04",
+    "language": "C",
+    "rule": "StringLiteral",
+    "input": "\"sem fechamento",
+    "accepted": false,
+    "reason": "Falta a aspa final: nenhum literal completo.",
+    "group": "principal"
+  },
+  {
+    "id": "J05",
+    "language": "Java",
+    "rule": "StringLiteral",
+    "input": "\"Olá\\nmundo\"",
+    "accepted": true,
+    "reason": "A sequência barra+n é um escape permitido, não uma quebra física de linha.",
+    "group": "principal"
+  },
+  {
+    "id": "J06",
+    "language": "Java",
+    "rule": "StringLiteral",
+    "input": "\"valor\\u0041\"",
+    "accepted": true,
+    "reason": "A gramática inclui UnicodeEscape no próprio lexer.",
+    "group": "principal"
+  },
+  {
+    "id": "J07",
+    "language": "Java",
+    "rule": "StringLiteral",
+    "input": "u8\"texto\"",
+    "accepted": false,
+    "reason": "O prefixo vira Identifier e o restante StringLiteral; não há um único literal.",
+    "group": "principal",
+    "full_types": [
+      "Identifier",
+      "StringLiteral"
+    ]
+  },
+  {
+    "id": "J08",
+    "language": "Java",
+    "rule": "StringLiteral",
+    "input": "\"texto\\x41\"",
+    "accepted": false,
+    "reason": "Escape hexadecimal \\x não é alternativa desta regra Java.",
+    "group": "principal"
+  },
+  {
+    "id": "C09",
+    "language": "C",
+    "rule": "IntegerConstant",
+    "input": "0xCAFEuLL",
+    "accepted": true,
+    "reason": "Inteiro hexadecimal com sufixo unsigned long long.",
+    "group": "principal"
+  },
+  {
+    "id": "C10",
+    "language": "C",
+    "rule": "IntegerConstant",
+    "input": "0b101101",
+    "accepted": true,
+    "reason": "Esta versão do lexer C inclui explicitamente BinaryConstant.",
+    "group": "principal"
+  },
+  {
+    "id": "C11",
+    "language": "C",
+    "rule": "IntegerConstant",
+    "input": "10_000",
+    "accepted": false,
+    "reason": "Sublinhado não pertence aos numerais desta gramática C.",
+    "group": "principal",
+    "full_types": [
+      "Constant",
+      "Identifier"
+    ]
+  },
+  {
+    "id": "C12",
+    "language": "C",
+    "rule": "IntegerConstant",
+    "input": "12345lL",
+    "accepted": false,
+    "reason": "LongLongSuffix admite ll ou LL, não a mistura lL.",
+    "group": "principal",
+    "full_types": [
+      "Constant",
+      "Identifier"
+    ]
+  },
+  {
+    "id": "J13",
+    "language": "Java",
+    "rule": "IntegerLiteral",
+    "input": "10_000L",
+    "accepted": true,
+    "reason": "Separador interno entre dígitos e sufixo long.",
+    "group": "principal"
+  },
+  {
+    "id": "J14",
+    "language": "Java",
+    "rule": "IntegerLiteral",
+    "input": "0b1010_0101",
+    "accepted": true,
+    "reason": "Base binária com separador interno.",
+    "group": "principal"
+  },
+  {
+    "id": "J15",
+    "language": "Java",
+    "rule": "IntegerLiteral",
+    "input": "12345UL",
+    "accepted": false,
+    "reason": "Java não possui sufixo unsigned; UL vira Identifier.",
+    "group": "principal",
+    "full_types": [
+      "IntegerLiteral",
+      "Identifier"
+    ]
+  },
+  {
+    "id": "J16",
+    "language": "Java",
+    "rule": "IntegerLiteral",
+    "input": "01289",
+    "accepted": false,
+    "reason": "O prefixo octal 012 e o decimal 89 viram tokens separados.",
+    "group": "principal",
+    "full_types": [
+      "IntegerLiteral",
+      "IntegerLiteral"
+    ]
+  },
+  {
+    "id": "C17",
+    "language": "C",
+    "rule": "FloatingConstant",
+    "input": "12.50e-03L",
+    "accepted": true,
+    "reason": "Fração decimal, expoente com sinal e sufixo long double.",
+    "group": "principal"
+  },
+  {
+    "id": "C18",
+    "language": "C",
+    "rule": "FloatingConstant",
+    "input": "0x1.Ap+4f",
+    "accepted": true,
+    "reason": "Real hexadecimal exige expoente binário p/P; aceita sufixo f.",
+    "group": "principal"
+  },
+  {
+    "id": "C19",
+    "language": "C",
+    "rule": "FloatingConstant",
+    "input": "10_000.50",
+    "accepted": false,
+    "reason": "Sublinhado divide a entrada em Constant, Identifier e Constant.",
+    "group": "principal",
+    "full_types": [
+      "Constant",
+      "Identifier",
+      "Constant"
+    ]
+  },
+  {
+    "id": "C20",
+    "language": "C",
+    "rule": "FloatingConstant",
+    "input": "12.5e+",
+    "accepted": false,
+    "reason": "O expoente precisa de dígitos após o sinal; a entrada é tokenizada em partes.",
+    "group": "principal",
+    "full_types": [
+      "Constant",
+      "Identifier",
+      "Plus"
+    ]
+  },
+  {
+    "id": "J21",
+    "language": "Java",
+    "rule": "FloatingPointLiteral",
+    "input": "10_000.50D",
+    "accepted": true,
+    "reason": "Separador interno e sufixo double aceitos.",
+    "group": "principal"
+  },
+  {
+    "id": "J22",
+    "language": "Java",
+    "rule": "FloatingPointLiteral",
+    "input": "0x1.Ap+4f",
+    "accepted": true,
+    "reason": "Mesma estrutura hexadecimal de C neste exemplo.",
+    "group": "principal"
+  },
+  {
+    "id": "J23",
+    "language": "Java",
+    "rule": "FloatingPointLiteral",
+    "input": "12.50L",
+    "accepted": false,
+    "reason": "L é sufixo inteiro, não sufixo de ponto flutuante Java.",
+    "group": "principal",
+    "full_types": [
+      "FloatingPointLiteral",
+      "Identifier"
+    ]
+  },
+  {
+    "id": "J24",
+    "language": "Java",
+    "rule": "FloatingPointLiteral",
+    "input": "0x1.8",
+    "accepted": false,
+    "reason": "Falta o expoente binário obrigatório p/P.",
+    "group": "principal",
+    "full_types": [
+      "IntegerLiteral",
+      "FloatingPointLiteral"
+    ]
+  },
+  {
+    "id": "C25",
+    "language": "C",
+    "rule": "IntegerConstant",
+    "input": "01289",
+    "accepted": false,
+    "reason": "DigitSequence pode consumir todos os dígitos, mas isso não comprova IntegerConstant.",
+    "group": "complementar",
+    "full_types": [
+      "DigitSequence"
+    ]
+  },
+  {
+    "id": "C26",
+    "language": "C",
+    "rule": "IntegerConstant",
+    "input": "0b1010L",
+    "accepted": false,
+    "reason": "BinaryConstant não tem IntegerSuffix nesta versão.",
+    "group": "complementar",
+    "full_types": [
+      "Constant",
+      "Identifier"
+    ]
+  },
+  {
+    "id": "C27",
+    "language": "C",
+    "rule": "FloatingConstant",
+    "input": "12345f",
+    "accepted": false,
+    "reason": "Em C, apenas dígitos e f não bastam para formar real.",
+    "group": "complementar",
+    "full_types": [
+      "Constant",
+      "Identifier"
+    ]
+  },
+  {
+    "id": "J28",
+    "language": "Java",
+    "rule": "FloatingPointLiteral",
+    "input": "12345f",
+    "accepted": true,
+    "reason": "Java admite Digits FloatTypeSuffix, sem ponto ou expoente.",
+    "group": "complementar"
+  },
+  {
+    "id": "C29",
+    "language": "C",
+    "rule": "IntegerConstant",
+    "input": "12345.0",
+    "accepted": false,
+    "reason": "Constant único pode ser real; a sonda do fragmento inteiro rejeita.",
+    "group": "complementar",
+    "full_types": [
+      "Constant"
+    ]
+  },
+  {
+    "id": "C30",
+    "language": "C",
+    "rule": "FloatingConstant",
+    "input": "12345",
+    "accepted": false,
+    "reason": "Constant único pode ser inteiro; a sonda de real rejeita.",
+    "group": "complementar",
+    "full_types": [
+      "Constant"
+    ]
+  },
+  {
+    "id": "J31",
+    "language": "Java",
+    "rule": "IntegerLiteral",
+    "input": "12345_",
+    "accepted": false,
+    "reason": "Sublinhado final não faz parte do numeral.",
+    "group": "complementar",
+    "full_types": [
+      "IntegerLiteral",
+      "UNDER_SCORE"
+    ]
+  },
+  {
+    "id": "J32",
+    "language": "Java",
+    "rule": "IntegerLiteral",
+    "input": "0x_FF",
+    "accepted": false,
+    "reason": "Sublinhado logo após o prefixo hexadecimal não é permitido.",
+    "group": "complementar",
+    "full_types": [
+      "IntegerLiteral",
+      "Identifier"
+    ]
+  },
+  {
+    "id": "J33",
+    "language": "Java",
+    "rule": "IntegerLiteral",
+    "input": "1__000",
+    "accepted": true,
+    "reason": "Múltiplos sublinhados internos são admitidos.",
+    "group": "complementar"
+  },
+  {
+    "id": "C34",
+    "language": "C",
+    "rule": "StringLiteral",
+    "input": "\"linha\\\nseguinte\"",
+    "accepted": true,
+    "reason": "SChar admite barra seguida de quebra física LF.",
+    "group": "complementar"
+  },
+  {
+    "id": "J35",
+    "language": "Java",
+    "rule": "StringLiteral",
+    "input": "\"linha\\\nseguinte\"",
+    "accepted": false,
+    "reason": "StringCharacter não admite continuação por barra e LF.",
+    "group": "complementar"
+  },
+  {
+    "id": "C36",
+    "language": "C",
+    "rule": "StringLiteral",
+    "input": "R\"texto\"",
+    "accepted": false,
+    "reason": "Esta gramática não tem raw string de C++.",
+    "group": "complementar",
+    "full_types": [
+      "Identifier",
+      "StringLiteral"
+    ]
+  },
+  {
+    "id": "C37",
+    "language": "C",
+    "rule": "StringLiteral",
+    "input": "\"linha\nseguinte\"",
+    "accepted": false,
+    "reason": "Quebra física sem barra é excluída de SChar.",
+    "group": "complementar"
+  },
+  {
+    "id": "J38",
+    "language": "Java",
+    "rule": "StringLiteral",
+    "input": "\"linha\nseguinte\"",
+    "accepted": false,
+    "reason": "Quebra física sem barra é excluída de StringCharacter.",
+    "group": "complementar"
+  },
+  {
+    "id": "C39",
+    "language": "C",
+    "rule": "IntegerConstant",
+    "input": "12345 ",
+    "accepted": false,
+    "reason": "Espaço oculto ainda é entrada adicional; não é um único literal exato.",
+    "group": "complementar",
+    "full_types": [
+      "Constant",
+      "Whitespace"
+    ]
+  },
+  {
+    "id": "J40",
+    "language": "Java",
+    "rule": "IntegerLiteral",
+    "input": "12345 ",
+    "accepted": false,
+    "reason": "WS é descartado, mas o token não cobre toda a entrada.",
+    "group": "complementar",
+    "full_types": [
+      "IntegerLiteral"
+    ]
+  },
+  {
+    "id": "J41",
+    "language": "Java",
+    "rule": "IntegerLiteral",
+    "input": "-12345",
+    "accepted": false,
+    "reason": "Sinal unário é um token separado; não integra IntegerLiteral.",
+    "group": "complementar",
+    "full_types": [
+      "SUB",
+      "IntegerLiteral"
+    ]
+  },
+  {
+    "id": "C42",
+    "language": "C",
+    "rule": "FloatingConstant",
+    "input": "0x1.8",
+    "accepted": false,
+    "reason": "Real hexadecimal sem expoente binário também é rejeitado em C.",
+    "group": "complementar",
+    "full_types": [
+      "Constant",
+      "Constant"
+    ]
+  },
+  {
+    "id": "C43",
+    "language": "C",
+    "rule": "StringLiteral",
+    "input": "\"valor\\u0041\"",
+    "accepted": true,
+    "reason": "UniversalCharacterName aceita \\u seguido de quatro hexadecimais.",
+    "group": "complementar"
+  },
+  {
+    "id": "J44",
+    "language": "Java",
+    "rule": "StringLiteral",
+    "input": "\"valor\\uu0041\"",
+    "accepted": true,
+    "reason": "UnicodeEscape Java aceita uma ou mais letras u.",
+    "group": "complementar"
+  },
+  {
+    "id": "C45",
+    "language": "C",
+    "rule": "StringLiteral",
+    "input": "\"valor\\uu0041\"",
+    "accepted": false,
+    "reason": "UniversalCharacterName C exige apenas uma letra u.",
+    "group": "complementar"
+  },
+  {
+    "id": "J46",
+    "language": "Java",
+    "rule": "StringLiteral",
+    "input": "\"texto\"/*comentário*/",
+    "accepted": false,
+    "reason": "Um comentário oculto não pode ser ignorado no critério de literal exato.",
+    "group": "complementar",
+    "full_types": [
+      "StringLiteral",
+      "COMMENT"
+    ]
+  }
+]

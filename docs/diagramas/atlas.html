@@ -1,0 +1,3443 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8">
+<title>TP1 — Atlas das regras léxicas</title>
+<style>body{font:16px system-ui;margin:40px;color:#172b42}h1,h2,h3{color:#173f69}article{border-top:1px solid #ccd6e0;padding:16px 0;overflow:auto}pre{background:#f3f5f8;padding:14px;white-space:pre-wrap}a{color:#17549c}svg{max-width:none}nav a{margin-right:20px}</style>
+<h1>TP1 · C e Java 20</h1><p>Ferrovias geradas das gramáticas fixadas. Leia da esquerda para a direita.
+Bifurcações são alternativas; desvios vazios são opcionais; retornos representam repetição.
+Caixas arredondadas representam literais/conjuntos; caixas retangulares referenciam outras regras.
+<code>~[... ]</code> significa qualquer caractere fora do conjunto. As barras e aspas seguem ANTLR, não são uma nova sintaxe.</p>
+<p>Os fragmentos são expandidos abaixo, uma vez por linguagem. Clique no nome de uma referência para navegar.</p><nav>
+<a href="#C-StringLiteral">C · StringLiteral</a>
+<a href="#C-IntegerConstant">C · IntegerConstant</a>
+<a href="#C-FloatingConstant">C · FloatingConstant</a>
+<a href="#Java-StringLiteral">Java · StringLiteral</a>
+<a href="#Java-IntegerLiteral">Java · IntegerLiteral</a>
+<a href="#Java-FloatingPointLiteral">Java · FloatingPointLiteral</a>
+</nav>
+<h2>C</h2>
+<article id="C-StringLiteral"><h3>StringLiteral</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 570.5 71" width="570.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M520.5 40h0.0" /><g>
+<path d="M50.0 40h0.0" /><path d="M229.0 40h0.0" /><path d="M50.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M70.0 20h139.0" /></g><path d="M209.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M50.0 40h20" /><g class="non-terminal ">
+<path d="M70.0 40h0.0" /><path d="M209.0 40h0.0" /><rect height="22" width="139" x="70" y="29"></rect><a xlink:href="atlas.html#C-EncodingPrefix"><text x="139.5" y="44">EncodingPrefix</text><text x="139.5" y="44">EncodingPrefix</text></a></g><path d="M209.0 40h20" /></g><path d="M229.0 40h10" /><g class="terminal ">
+<path d="M239.0 40h0.0" /><path d="M284.5 40h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="239" y="29"></rect><text x="261.75" y="44">&apos;&quot;&apos;</text></g><path d="M284.5 40h10" /><g>
+<path d="M294.5 40h0.0" /><path d="M465.0 40h0.0" /><path d="M294.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M314.5 20h130.5" /></g><path d="M445.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M294.5 40h20" /><g class="non-terminal ">
+<path d="M314.5 40h0.0" /><path d="M445.0 40h0.0" /><rect height="22" width="130.5" x="314.5" y="29"></rect><a xlink:href="atlas.html#C-SCharSequence"><text x="379.75" y="44">SCharSequence</text><text x="379.75" y="44">SCharSequence</text></a></g><path d="M445.0 40h20" /></g><path d="M465.0 40h10" /><g class="terminal ">
+<path d="M475.0 40h0.0" /><path d="M520.5 40h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="475" y="29"></rect><text x="497.75" y="44">&apos;&quot;&apos;</text></g></g><path d="M520.5 40h10" /><path d="M 530.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>StringLiteral : EncodingPrefix ? &#x27;&quot;&#x27; SCharSequence ? &#x27;&quot;&#x27;;</pre></article>
+<article id="C-IntegerConstant"><h3>IntegerConstant</h3>
+<svg class="railroad-diagram" height="179" viewBox="0 0 482.0 179" width="482.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 40h0.0" /><path d="M442.0 40h0.0" /><path d="M40.0 40h20" /><g>
+<path d="M60.0 40h17.0" /><path d="M405.0 40h17.0" /><g class="non-terminal ">
+<path d="M77.0 40h0.0" /><path d="M224.5 40h0.0" /><rect height="22" width="147.5" x="77" y="29"></rect><a xlink:href="atlas.html#C-DecimalConstant"><text x="150.75" y="44">DecimalConstant</text><text x="150.75" y="44">DecimalConstant</text></a></g><path d="M224.5 40h10" /><g>
+<path d="M234.5 40h0.0" /><path d="M405.0 40h0.0" /><path d="M234.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M254.5 20h130.5" /></g><path d="M385.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M234.5 40h20" /><g class="non-terminal ">
+<path d="M254.5 40h0.0" /><path d="M385.0 40h0.0" /><rect height="22" width="130.5" x="254.5" y="29"></rect><a xlink:href="atlas.html#C-IntegerSuffix"><text x="319.75" y="44">IntegerSuffix</text><text x="319.75" y="44">IntegerSuffix</text></a></g><path d="M385.0 40h20" /></g></g><path d="M422.0 40h20" /><path d="M40.0 40a10 10 0 0 1 10 10v19a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 79h25.5" /><path d="M396.5 79h25.5" /><g class="non-terminal ">
+<path d="M85.5 79h0.0" /><path d="M216.0 79h0.0" /><rect height="22" width="130.5" x="85.5" y="68"></rect><a xlink:href="atlas.html#C-OctalConstant"><text x="150.75" y="83">OctalConstant</text><text x="150.75" y="83">OctalConstant</text></a></g><path d="M216.0 79h10" /><g>
+<path d="M226.0 79h0.0" /><path d="M396.5 79h0.0" /><path d="M226.0 79a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M246.0 59h130.5" /></g><path d="M376.5 59a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M226.0 79h20" /><g class="non-terminal ">
+<path d="M246.0 79h0.0" /><path d="M376.5 79h0.0" /><rect height="22" width="130.5" x="246" y="68"></rect><a xlink:href="atlas.html#C-IntegerSuffix"><text x="311.25" y="83">IntegerSuffix</text><text x="311.25" y="83">IntegerSuffix</text></a></g><path d="M376.5 79h20" /></g></g><path d="M422.0 79a10 10 0 0 0 10 -10v-19a10 10 0 0 1 10 -10" /><path d="M40.0 40a10 10 0 0 1 10 10v58a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 118h0.0" /><path d="M422.0 118h0.0" /><g class="non-terminal ">
+<path d="M60.0 118h0.0" /><path d="M241.5 118h0.0" /><rect height="22" width="181.5" x="60" y="107"></rect><a xlink:href="atlas.html#C-HexadecimalConstant"><text x="150.75" y="122">HexadecimalConstant</text><text x="150.75" y="122">HexadecimalConstant</text></a></g><path d="M241.5 118h10" /><g>
+<path d="M251.5 118h0.0" /><path d="M422.0 118h0.0" /><path d="M251.5 118a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M271.5 98h130.5" /></g><path d="M402.0 98a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M251.5 118h20" /><g class="non-terminal ">
+<path d="M271.5 118h0.0" /><path d="M402.0 118h0.0" /><rect height="22" width="130.5" x="271.5" y="107"></rect><a xlink:href="atlas.html#C-IntegerSuffix"><text x="336.75" y="122">IntegerSuffix</text><text x="336.75" y="122">IntegerSuffix</text></a></g><path d="M402.0 118h20" /></g></g><path d="M422.0 118a10 10 0 0 0 10 -10v-58a10 10 0 0 1 10 -10" /><path d="M40.0 40a10 10 0 0 1 10 10v88a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 148h111.5" /><path d="M310.5 148h111.5" /><rect height="22" width="139" x="171.5" y="137"></rect><a xlink:href="atlas.html#C-BinaryConstant"><text x="241" y="152">BinaryConstant</text><text x="241" y="152">BinaryConstant</text></a></g><path d="M422.0 148a10 10 0 0 0 10 -10v-88a10 10 0 0 1 10 -10" /></g><path d="M 442.0 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>IntegerConstant : DecimalConstant IntegerSuffix ? | OctalConstant IntegerSuffix ? | HexadecimalConstant IntegerSuffix ? | BinaryConstant;</pre></article>
+<article id="C-FloatingConstant"><h3>FloatingConstant</h3>
+<svg class="railroad-diagram" height="92" viewBox="0 0 369.5 92" width="369.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M329.5 31h0.0" /><path d="M40.0 31h20" /><g class="non-terminal ">
+<path d="M60.0 31h17.0" /><path d="M292.5 31h17.0" /><rect height="22" width="215.5" x="77" y="20"></rect><a xlink:href="atlas.html#C-DecimalFloatingConstant"><text x="184.75" y="35">DecimalFloatingConstant</text><text x="184.75" y="35">DecimalFloatingConstant</text></a></g><path d="M309.5 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 61h0.0" /><path d="M309.5 61h0.0" /><rect height="22" width="249.5" x="60" y="50"></rect><a xlink:href="atlas.html#C-HexadecimalFloatingConstant"><text x="184.75" y="65">HexadecimalFloatingConstant</text><text x="184.75" y="65">HexadecimalFloatingConstant</text></a></g><path d="M309.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 329.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>FloatingConstant : DecimalFloatingConstant | HexadecimalFloatingConstant;</pre></article>
+<article id="C-EncodingPrefix"><h3>EncodingPrefix</h3>
+<svg class="railroad-diagram" height="152" viewBox="0 0 174.0 152" width="174.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M134.0 31h0.0" /><path d="M40.0 31h20" /><g class="terminal ">
+<path d="M60.0 31h0.0" /><path d="M114.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="60" y="20"></rect><text x="87" y="35">&apos;u8&apos;</text></g><path d="M114.0 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="terminal ">
+<path d="M60.0 61h4.25" /><path d="M109.75 61h4.25" /><rect height="22" rx="10" ry="10" width="45.5" x="64.25" y="50"></rect><text x="87" y="65">&apos;u&apos;</text></g><path d="M114.0 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10" /><g class="terminal ">
+<path d="M60.0 91h4.25" /><path d="M109.75 91h4.25" /><rect height="22" rx="10" ry="10" width="45.5" x="64.25" y="80"></rect><text x="87" y="95">&apos;U&apos;</text></g><path d="M114.0 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v70a10 10 0 0 0 10 10" /><g class="terminal ">
+<path d="M60.0 121h4.25" /><path d="M109.75 121h4.25" /><rect height="22" rx="10" ry="10" width="45.5" x="64.25" y="110"></rect><text x="87" y="125">&apos;L&apos;</text></g><path d="M114.0 121a10 10 0 0 0 10 -10v-70a10 10 0 0 1 10 -10" /></g><path d="M 134.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>EncodingPrefix : &#x27;u8&#x27; | &#x27;u&#x27; | &#x27;U&#x27; | &#x27;L&#x27;;</pre></article>
+<article id="C-SCharSequence"><h3>SCharSequence</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 182.5 71" width="182.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M132.5 31h0.0" /><path d="M50.0 31h10" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M122.5 31h0.0" /><rect height="22" width="62.5" x="60" y="20"></rect><a xlink:href="atlas.html#C-SChar"><text x="91.25" y="35">SChar</text><text x="91.25" y="35">SChar</text></a></g><path d="M122.5 31h10" /><path d="M60.0 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 51h62.5" /></g><path d="M122.5 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M132.5 31h10" /><path d="M 142.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>SCharSequence : SChar +;</pre></article>
+<article id="C-SChar"><h3>SChar</h3>
+<svg class="railroad-diagram" height="152" viewBox="0 0 259.0 152" width="259.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M219.0 31h0.0" /><path d="M40.0 31h20" /><g class="terminal ">
+<path d="M60.0 31h17.0" /><path d="M182.0 31h17.0" /><rect height="22" rx="10" ry="10" width="105" x="77" y="20"></rect><text x="129.5" y="35">~[&quot;\\\r\n]</text><title>Qualquer caractere fora do conjunto indicado</title></g><path d="M199.0 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 61h0.0" /><path d="M199.0 61h0.0" /><rect height="22" width="139" x="60" y="50"></rect><a xlink:href="atlas.html#C-EscapeSequence"><text x="129.5" y="65">EscapeSequence</text><text x="129.5" y="65">EscapeSequence</text></a></g><path d="M199.0 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10" /><g class="terminal ">
+<path d="M60.0 91h34.0" /><path d="M165.0 91h34.0" /><rect height="22" rx="10" ry="10" width="71" x="94" y="80"></rect><text x="129.5" y="95">&apos;\\\n&apos;</text></g><path d="M199.0 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v70a10 10 0 0 0 10 10" /><g class="terminal ">
+<path d="M60.0 121h25.5" /><path d="M173.5 121h25.5" /><rect height="22" rx="10" ry="10" width="88" x="85.5" y="110"></rect><text x="129.5" y="125">&apos;\\\r\n&apos;</text></g><path d="M199.0 121a10 10 0 0 0 10 -10v-70a10 10 0 0 1 10 -10" /></g><path d="M 219.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>SChar : ~ [&quot;\\\r\n] | EscapeSequence | &#x27;\\\n&#x27; | &#x27;\\\r\n&#x27;;</pre></article>
+<article id="C-EscapeSequence"><h3>EscapeSequence</h3>
+<svg class="railroad-diagram" height="152" viewBox="0 0 352.5 152" width="352.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M312.5 31h0.0" /><path d="M40.0 31h20" /><g class="non-terminal ">
+<path d="M60.0 31h21.25" /><path d="M271.25 31h21.25" /><rect height="22" width="190" x="81.25" y="20"></rect><a xlink:href="atlas.html#C-SimpleEscapeSequence"><text x="176.25" y="35">SimpleEscapeSequence</text><text x="176.25" y="35">SimpleEscapeSequence</text></a></g><path d="M292.5 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 61h25.5" /><path d="M267.0 61h25.5" /><rect height="22" width="181.5" x="85.5" y="50"></rect><a xlink:href="atlas.html#C-OctalEscapeSequence"><text x="176.25" y="65">OctalEscapeSequence</text><text x="176.25" y="65">OctalEscapeSequence</text></a></g><path d="M292.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 91h0.0" /><path d="M292.5 91h0.0" /><rect height="22" width="232.5" x="60" y="80"></rect><a xlink:href="atlas.html#C-HexadecimalEscapeSequence"><text x="176.25" y="95">HexadecimalEscapeSequence</text><text x="176.25" y="95">HexadecimalEscapeSequence</text></a></g><path d="M292.5 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v70a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 121h12.75" /><path d="M279.75 121h12.75" /><rect height="22" width="207" x="72.75" y="110"></rect><a xlink:href="atlas.html#C-UniversalCharacterName"><text x="176.25" y="125">UniversalCharacterName</text><text x="176.25" y="125">UniversalCharacterName</text></a></g><path d="M292.5 121a10 10 0 0 0 10 -10v-70a10 10 0 0 1 10 -10" /></g><path d="M 312.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>EscapeSequence : SimpleEscapeSequence | OctalEscapeSequence | HexadecimalEscapeSequence | UniversalCharacterName;</pre></article>
+<article id="C-SimpleEscapeSequence"><h3>SimpleEscapeSequence</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 313.0 62" width="313.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M263.0 31h0.0" /><g class="terminal ">
+<path d="M50.0 31h0.0" /><path d="M104.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="20"></rect><text x="77" y="35">&apos;\\&apos;</text></g><path d="M104.0 31h10" /><path d="M114.0 31h10" /><g class="terminal ">
+<path d="M124.0 31h0.0" /><path d="M263.0 31h0.0" /><rect height="22" rx="10" ry="10" width="139" x="124" y="20"></rect><text x="193.5" y="35">[&apos;&quot;?abfnrtv\\]</text></g></g><path d="M263.0 31h10" /><path d="M 273.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>SimpleEscapeSequence : &#x27;\\&#x27; [&#x27;&quot;?abfnrtv\\];</pre></article>
+<article id="C-OctalEscapeSequence"><h3>OctalEscapeSequence</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 579.0 71" width="579.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M529.0 40h0.0" /><g class="terminal ">
+<path d="M50.0 40h0.0" /><path d="M104.0 40h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="29"></rect><text x="77" y="44">&apos;\\&apos;</text></g><path d="M104.0 40h10" /><path d="M114.0 40h10" /><g class="non-terminal ">
+<path d="M124.0 40h0.0" /><path d="M229.0 40h0.0" /><rect height="22" width="105" x="124" y="29"></rect><a xlink:href="atlas.html#C-OctalDigit"><text x="176.5" y="44">OctalDigit</text><text x="176.5" y="44">OctalDigit</text></a></g><path d="M229.0 40h10" /><g>
+<path d="M239.0 40h0.0" /><path d="M384.0 40h0.0" /><path d="M239.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M259.0 20h105.0" /></g><path d="M364.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M239.0 40h20" /><g class="non-terminal ">
+<path d="M259.0 40h0.0" /><path d="M364.0 40h0.0" /><rect height="22" width="105" x="259" y="29"></rect><a xlink:href="atlas.html#C-OctalDigit"><text x="311.5" y="44">OctalDigit</text><text x="311.5" y="44">OctalDigit</text></a></g><path d="M364.0 40h20" /></g><g>
+<path d="M384.0 40h0.0" /><path d="M529.0 40h0.0" /><path d="M384.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M404.0 20h105.0" /></g><path d="M509.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M384.0 40h20" /><g class="non-terminal ">
+<path d="M404.0 40h0.0" /><path d="M509.0 40h0.0" /><rect height="22" width="105" x="404" y="29"></rect><a xlink:href="atlas.html#C-OctalDigit"><text x="456.5" y="44">OctalDigit</text><text x="456.5" y="44">OctalDigit</text></a></g><path d="M509.0 40h20" /></g></g><path d="M529.0 40h10" /><path d="M 539.0 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>OctalEscapeSequence : &#x27;\\&#x27; OctalDigit OctalDigit ? OctalDigit ?;</pre></article>
+<article id="C-OctalDigit"><h3>OctalDigit</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 162.5 62" width="162.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M112.5 31h0.0" /><rect height="22" rx="10" ry="10" width="62.5" x="50" y="20"></rect><text x="81.25" y="35">[0-7]</text></g><path d="M112.5 31h10" /><path d="M 122.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>OctalDigit : [0-7];</pre></article>
+<article id="C-HexadecimalEscapeSequence"><h3>HexadecimalEscapeSequence</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 358.5 71" width="358.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M308.5 31h0.0" /><g class="terminal ">
+<path d="M50.0 31h0.0" /><path d="M112.5 31h0.0" /><rect height="22" rx="10" ry="10" width="62.5" x="50" y="20"></rect><text x="81.25" y="35">&apos;\\x&apos;</text></g><path d="M112.5 31h10" /><path d="M122.5 31h10" /><g>
+<path d="M132.5 31h0.0" /><path d="M308.5 31h0.0" /><path d="M132.5 31h10" /><g class="non-terminal ">
+<path d="M142.5 31h0.0" /><path d="M298.5 31h0.0" /><rect height="22" width="156" x="142.5" y="20"></rect><a xlink:href="atlas.html#C-HexadecimalDigit"><text x="220.5" y="35">HexadecimalDigit</text><text x="220.5" y="35">HexadecimalDigit</text></a></g><path d="M298.5 31h10" /><path d="M142.5 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M142.5 51h156.0" /></g><path d="M298.5 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g></g><path d="M308.5 31h10" /><path d="M 318.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexadecimalEscapeSequence : &#x27;\\x&#x27; HexadecimalDigit +;</pre></article>
+<article id="C-HexadecimalDigit"><h3>HexadecimalDigit</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 213.5 62" width="213.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M163.5 31h0.0" /><rect height="22" rx="10" ry="10" width="113.5" x="50" y="20"></rect><text x="106.75" y="35">[0-9a-fA-F]</text></g><path d="M163.5 31h10" /><path d="M 173.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexadecimalDigit : [0-9a-fA-F];</pre></article>
+<article id="C-UniversalCharacterName"><h3>UniversalCharacterName</h3>
+<svg class="railroad-diagram" height="92" viewBox="0 0 381.5 92" width="381.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M341.5 31h0.0" /><path d="M40.0 31h20" /><g>
+<path d="M60.0 31h49.75" /><path d="M271.75 31h49.75" /><g class="terminal ">
+<path d="M109.75 31h0.0" /><path d="M172.25 31h0.0" /><rect height="22" rx="10" ry="10" width="62.5" x="109.75" y="20"></rect><text x="141" y="35">&apos;\\u&apos;</text></g><path d="M172.25 31h10" /><path d="M182.25 31h10" /><g class="non-terminal ">
+<path d="M192.25 31h0.0" /><path d="M271.75 31h0.0" /><rect height="22" width="79.5" x="192.25" y="20"></rect><a xlink:href="atlas.html#C-HexQuad"><text x="232" y="35">HexQuad</text><text x="232" y="35">HexQuad</text></a></g></g><path d="M321.5 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 61h0.0" /><path d="M321.5 61h0.0" /><g class="terminal ">
+<path d="M60.0 61h0.0" /><path d="M122.5 61h0.0" /><rect height="22" rx="10" ry="10" width="62.5" x="60" y="50"></rect><text x="91.25" y="65">&apos;\\U&apos;</text></g><path d="M122.5 61h10" /><path d="M132.5 61h10" /><g class="non-terminal ">
+<path d="M142.5 61h0.0" /><path d="M222.0 61h0.0" /><rect height="22" width="79.5" x="142.5" y="50"></rect><a xlink:href="atlas.html#C-HexQuad"><text x="182.25" y="65">HexQuad</text><text x="182.25" y="65">HexQuad</text></a></g><path d="M222.0 61h10" /><path d="M232.0 61h10" /><g class="non-terminal ">
+<path d="M242.0 61h0.0" /><path d="M321.5 61h0.0" /><rect height="22" width="79.5" x="242" y="50"></rect><a xlink:href="atlas.html#C-HexQuad"><text x="281.75" y="65">HexQuad</text><text x="281.75" y="65">HexQuad</text></a></g></g><path d="M321.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 341.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>UniversalCharacterName : &#x27;\\u&#x27; HexQuad | &#x27;\\U&#x27; HexQuad HexQuad;</pre></article>
+<article id="C-HexQuad"><h3>HexQuad</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 784.0 62" width="784.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M734.0 31h0.0" /><g class="non-terminal ">
+<path d="M50.0 31h0.0" /><path d="M206.0 31h0.0" /><rect height="22" width="156" x="50" y="20"></rect><a xlink:href="atlas.html#C-HexadecimalDigit"><text x="128" y="35">HexadecimalDigit</text><text x="128" y="35">HexadecimalDigit</text></a></g><path d="M206.0 31h10" /><path d="M216.0 31h10" /><g class="non-terminal ">
+<path d="M226.0 31h0.0" /><path d="M382.0 31h0.0" /><rect height="22" width="156" x="226" y="20"></rect><a xlink:href="atlas.html#C-HexadecimalDigit"><text x="304" y="35">HexadecimalDigit</text><text x="304" y="35">HexadecimalDigit</text></a></g><path d="M382.0 31h10" /><path d="M392.0 31h10" /><g class="non-terminal ">
+<path d="M402.0 31h0.0" /><path d="M558.0 31h0.0" /><rect height="22" width="156" x="402" y="20"></rect><a xlink:href="atlas.html#C-HexadecimalDigit"><text x="480" y="35">HexadecimalDigit</text><text x="480" y="35">HexadecimalDigit</text></a></g><path d="M558.0 31h10" /><path d="M568.0 31h10" /><g class="non-terminal ">
+<path d="M578.0 31h0.0" /><path d="M734.0 31h0.0" /><rect height="22" width="156" x="578" y="20"></rect><a xlink:href="atlas.html#C-HexadecimalDigit"><text x="656" y="35">HexadecimalDigit</text><text x="656" y="35">HexadecimalDigit</text></a></g></g><path d="M734.0 31h10" /><path d="M 744.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexQuad : HexadecimalDigit HexadecimalDigit HexadecimalDigit HexadecimalDigit;</pre></article>
+<article id="C-DecimalConstant"><h3>DecimalConstant</h3>
+<svg class="railroad-diagram" height="80" viewBox="0 0 354.5 80" width="354.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M304.5 40h0.0" /><g class="non-terminal ">
+<path d="M50.0 40h0.0" /><path d="M172.0 40h0.0" /><rect height="22" width="122" x="50" y="29"></rect><a xlink:href="atlas.html#C-NonzeroDigit"><text x="111" y="44">NonzeroDigit</text><text x="111" y="44">NonzeroDigit</text></a></g><path d="M172.0 40h10" /><g>
+<path d="M182.0 40h0.0" /><path d="M304.5 40h0.0" /><path d="M182.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M202.0 20h82.5" /></g><path d="M284.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M182.0 40h20" /><g>
+<path d="M202.0 40h0.0" /><path d="M284.5 40h0.0" /><path d="M202.0 40h10" /><g class="non-terminal ">
+<path d="M212.0 40h0.0" /><path d="M274.5 40h0.0" /><rect height="22" width="62.5" x="212" y="29"></rect><a xlink:href="atlas.html#C-Digit"><text x="243.25" y="44">Digit</text><text x="243.25" y="44">Digit</text></a></g><path d="M274.5 40h10" /><path d="M212.0 40a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M212.0 60h62.5" /></g><path d="M274.5 60a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M284.5 40h20" /></g></g><path d="M304.5 40h10" /><path d="M 314.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>DecimalConstant : NonzeroDigit Digit *;</pre></article>
+<article id="C-NonzeroDigit"><h3>NonzeroDigit</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 162.5 62" width="162.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M112.5 31h0.0" /><rect height="22" rx="10" ry="10" width="62.5" x="50" y="20"></rect><text x="81.25" y="35">[1-9]</text></g><path d="M112.5 31h10" /><path d="M 122.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>NonzeroDigit : [1-9];</pre></article>
+<article id="C-Digit"><h3>Digit</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 162.5 62" width="162.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M112.5 31h0.0" /><rect height="22" rx="10" ry="10" width="62.5" x="50" y="20"></rect><text x="81.25" y="35">[0-9]</text></g><path d="M112.5 31h10" /><path d="M 122.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>Digit : [0-9];</pre></article>
+<article id="C-IntegerSuffix"><h3>IntegerSuffix</h3>
+<svg class="railroad-diagram" height="179" viewBox="0 0 448.0 179" width="448.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 40h0.0" /><path d="M408.0 40h0.0" /><path d="M40.0 40h20" /><g>
+<path d="M60.0 40h17.0" /><path d="M371.0 40h17.0" /><g class="non-terminal ">
+<path d="M77.0 40h0.0" /><path d="M216.0 40h0.0" /><rect height="22" width="139" x="77" y="29"></rect><a xlink:href="atlas.html#C-UnsignedSuffix"><text x="146.5" y="44">UnsignedSuffix</text><text x="146.5" y="44">UnsignedSuffix</text></a></g><path d="M216.0 40h10" /><g>
+<path d="M226.0 40h0.0" /><path d="M371.0 40h0.0" /><path d="M226.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M246.0 20h105.0" /></g><path d="M351.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M226.0 40h20" /><g class="non-terminal ">
+<path d="M246.0 40h0.0" /><path d="M351.0 40h0.0" /><rect height="22" width="105" x="246" y="29"></rect><a xlink:href="atlas.html#C-LongSuffix"><text x="298.5" y="44">LongSuffix</text><text x="298.5" y="44">LongSuffix</text></a></g><path d="M351.0 40h20" /></g></g><path d="M388.0 40h20" /><path d="M40.0 40a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 70h15.0" /><path d="M373.0 70h15.0" /><g class="non-terminal ">
+<path d="M75.0 70h0.0" /><path d="M214.0 70h0.0" /><rect height="22" width="139" x="75" y="59"></rect><a xlink:href="atlas.html#C-UnsignedSuffix"><text x="144.5" y="74">UnsignedSuffix</text><text x="144.5" y="74">UnsignedSuffix</text></a></g><path d="M214.0 70h10" /><path d="M224.0 70h10" /><g class="non-terminal ">
+<path d="M234.0 70h0.0" /><path d="M373.0 70h0.0" /><rect height="22" width="139" x="234" y="59"></rect><a xlink:href="atlas.html#C-LongLongSuffix"><text x="303.5" y="74">LongLongSuffix</text><text x="303.5" y="74">LongLongSuffix</text></a></g></g><path d="M388.0 70a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /><path d="M40.0 40a10 10 0 0 1 10 10v49a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 109h17.0" /><path d="M371.0 109h17.0" /><g class="non-terminal ">
+<path d="M77.0 109h0.0" /><path d="M182.0 109h0.0" /><rect height="22" width="105" x="77" y="98"></rect><a xlink:href="atlas.html#C-LongSuffix"><text x="129.5" y="113">LongSuffix</text><text x="129.5" y="113">LongSuffix</text></a></g><path d="M182.0 109h10" /><g>
+<path d="M192.0 109h0.0" /><path d="M371.0 109h0.0" /><path d="M192.0 109a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M212.0 89h139.0" /></g><path d="M351.0 89a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M192.0 109h20" /><g class="non-terminal ">
+<path d="M212.0 109h0.0" /><path d="M351.0 109h0.0" /><rect height="22" width="139" x="212" y="98"></rect><a xlink:href="atlas.html#C-UnsignedSuffix"><text x="281.5" y="113">UnsignedSuffix</text><text x="281.5" y="113">UnsignedSuffix</text></a></g><path d="M351.0 109h20" /></g></g><path d="M388.0 109a10 10 0 0 0 10 -10v-49a10 10 0 0 1 10 -10" /><path d="M40.0 40a10 10 0 0 1 10 10v88a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 148h0.0" /><path d="M388.0 148h0.0" /><g class="non-terminal ">
+<path d="M60.0 148h0.0" /><path d="M199.0 148h0.0" /><rect height="22" width="139" x="60" y="137"></rect><a xlink:href="atlas.html#C-LongLongSuffix"><text x="129.5" y="152">LongLongSuffix</text><text x="129.5" y="152">LongLongSuffix</text></a></g><path d="M199.0 148h10" /><g>
+<path d="M209.0 148h0.0" /><path d="M388.0 148h0.0" /><path d="M209.0 148a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M229.0 128h139.0" /></g><path d="M368.0 128a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M209.0 148h20" /><g class="non-terminal ">
+<path d="M229.0 148h0.0" /><path d="M368.0 148h0.0" /><rect height="22" width="139" x="229" y="137"></rect><a xlink:href="atlas.html#C-UnsignedSuffix"><text x="298.5" y="152">UnsignedSuffix</text><text x="298.5" y="152">UnsignedSuffix</text></a></g><path d="M368.0 148h20" /></g></g><path d="M388.0 148a10 10 0 0 0 10 -10v-88a10 10 0 0 1 10 -10" /></g><path d="M 408.0 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>IntegerSuffix : UnsignedSuffix LongSuffix ? | UnsignedSuffix LongLongSuffix | LongSuffix UnsignedSuffix ? | LongLongSuffix UnsignedSuffix ?;</pre></article>
+<article id="C-UnsignedSuffix"><h3>UnsignedSuffix</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 154.0 62" width="154.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M104.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="20"></rect><text x="77" y="35">[uU]</text></g><path d="M104.0 31h10" /><path d="M 114.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>UnsignedSuffix : [uU];</pre></article>
+<article id="C-LongSuffix"><h3>LongSuffix</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 154.0 62" width="154.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M104.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="20"></rect><text x="77" y="35">[lL]</text></g><path d="M104.0 31h10" /><path d="M 114.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>LongSuffix : [lL];</pre></article>
+<article id="C-LongLongSuffix"><h3>LongLongSuffix</h3>
+<svg class="railroad-diagram" height="92" viewBox="0 0 174.0 92" width="174.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M134.0 31h0.0" /><path d="M40.0 31h20" /><g class="terminal ">
+<path d="M60.0 31h0.0" /><path d="M114.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="60" y="20"></rect><text x="87" y="35">&apos;ll&apos;</text></g><path d="M114.0 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="terminal ">
+<path d="M60.0 61h0.0" /><path d="M114.0 61h0.0" /><rect height="22" rx="10" ry="10" width="54" x="60" y="50"></rect><text x="87" y="65">&apos;LL&apos;</text></g><path d="M114.0 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 134.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>LongLongSuffix : &#x27;ll&#x27; | &#x27;LL&#x27;;</pre></article>
+<article id="C-OctalConstant"><h3>OctalConstant</h3>
+<svg class="railroad-diagram" height="80" viewBox="0 0 320.5 80" width="320.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M270.5 40h0.0" /><g class="terminal ">
+<path d="M50.0 40h0.0" /><path d="M95.5 40h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="50" y="29"></rect><text x="72.75" y="44">&apos;0&apos;</text></g><path d="M95.5 40h10" /><g>
+<path d="M105.5 40h0.0" /><path d="M270.5 40h0.0" /><path d="M105.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M125.5 20h125.0" /></g><path d="M250.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M105.5 40h20" /><g>
+<path d="M125.5 40h0.0" /><path d="M250.5 40h0.0" /><path d="M125.5 40h10" /><g class="non-terminal ">
+<path d="M135.5 40h0.0" /><path d="M240.5 40h0.0" /><rect height="22" width="105" x="135.5" y="29"></rect><a xlink:href="atlas.html#C-OctalDigit"><text x="188" y="44">OctalDigit</text><text x="188" y="44">OctalDigit</text></a></g><path d="M240.5 40h10" /><path d="M135.5 40a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M135.5 60h105.0" /></g><path d="M240.5 60a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M250.5 40h20" /></g></g><path d="M270.5 40h10" /><path d="M 280.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>OctalConstant : &#x27;0&#x27; OctalDigit *;</pre></article>
+<article id="C-HexadecimalConstant"><h3>HexadecimalConstant</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 460.5 71" width="460.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M410.5 31h0.0" /><g class="non-terminal ">
+<path d="M50.0 31h0.0" /><path d="M214.5 31h0.0" /><rect height="22" width="164.5" x="50" y="20"></rect><a xlink:href="atlas.html#C-HexadecimalPrefix"><text x="132.25" y="35">HexadecimalPrefix</text><text x="132.25" y="35">HexadecimalPrefix</text></a></g><path d="M214.5 31h10" /><path d="M224.5 31h10" /><g>
+<path d="M234.5 31h0.0" /><path d="M410.5 31h0.0" /><path d="M234.5 31h10" /><g class="non-terminal ">
+<path d="M244.5 31h0.0" /><path d="M400.5 31h0.0" /><rect height="22" width="156" x="244.5" y="20"></rect><a xlink:href="atlas.html#C-HexadecimalDigit"><text x="322.5" y="35">HexadecimalDigit</text><text x="322.5" y="35">HexadecimalDigit</text></a></g><path d="M400.5 31h10" /><path d="M244.5 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M244.5 51h156.0" /></g><path d="M400.5 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g></g><path d="M410.5 31h10" /><path d="M 420.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexadecimalConstant : HexadecimalPrefix HexadecimalDigit +;</pre></article>
+<article id="C-HexadecimalPrefix"><h3>HexadecimalPrefix</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 219.5 62" width="219.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M169.5 31h0.0" /><g class="terminal ">
+<path d="M50.0 31h0.0" /><path d="M95.5 31h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="50" y="20"></rect><text x="72.75" y="35">&apos;0&apos;</text></g><path d="M95.5 31h10" /><path d="M105.5 31h10" /><g class="terminal ">
+<path d="M115.5 31h0.0" /><path d="M169.5 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="115.5" y="20"></rect><text x="142.5" y="35">[xX]</text></g></g><path d="M169.5 31h10" /><path d="M 179.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexadecimalPrefix : &#x27;0&#x27; [xX];</pre></article>
+<article id="C-BinaryConstant"><h3>BinaryConstant</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 322.0 71" width="322.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M272.0 31h0.0" /><g class="terminal ">
+<path d="M50.0 31h0.0" /><path d="M95.5 31h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="50" y="20"></rect><text x="72.75" y="35">&apos;0&apos;</text></g><path d="M95.5 31h10" /><path d="M105.5 31h10" /><g class="terminal ">
+<path d="M115.5 31h0.0" /><path d="M169.5 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="115.5" y="20"></rect><text x="142.5" y="35">[bB]</text></g><path d="M169.5 31h10" /><path d="M179.5 31h10" /><g>
+<path d="M189.5 31h0.0" /><path d="M272.0 31h0.0" /><path d="M189.5 31h10" /><g class="terminal ">
+<path d="M199.5 31h0.0" /><path d="M262.0 31h0.0" /><rect height="22" rx="10" ry="10" width="62.5" x="199.5" y="20"></rect><text x="230.75" y="35">[0-1]</text></g><path d="M262.0 31h10" /><path d="M199.5 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M199.5 51h62.5" /></g><path d="M262.0 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g></g><path d="M272.0 31h10" /><path d="M 282.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>BinaryConstant : &#x27;0&#x27; [bB] [0-1] +;</pre></article>
+<article id="C-DecimalFloatingConstant"><h3>DecimalFloatingConstant</h3>
+<svg class="railroad-diagram" height="110" viewBox="0 0 644.0 110" width="644.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 40h0.0" /><path d="M604.0 40h0.0" /><path d="M40.0 40h20" /><g>
+<path d="M60.0 40h0.0" /><path d="M584.0 40h0.0" /><g class="non-terminal ">
+<path d="M60.0 40h0.0" /><path d="M233.0 40h0.0" /><rect height="22" width="173" x="60" y="29"></rect><a xlink:href="atlas.html#C-FractionalConstant"><text x="146.5" y="44">FractionalConstant</text><text x="146.5" y="44">FractionalConstant</text></a></g><path d="M233.0 40h10" /><g>
+<path d="M243.0 40h0.0" /><path d="M405.0 40h0.0" /><path d="M243.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M263.0 20h122.0" /></g><path d="M385.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M243.0 40h20" /><g class="non-terminal ">
+<path d="M263.0 40h0.0" /><path d="M385.0 40h0.0" /><rect height="22" width="122" x="263" y="29"></rect><a xlink:href="atlas.html#C-ExponentPart"><text x="324" y="44">ExponentPart</text><text x="324" y="44">ExponentPart</text></a></g><path d="M385.0 40h20" /></g><g>
+<path d="M405.0 40h0.0" /><path d="M584.0 40h0.0" /><path d="M405.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M425.0 20h139.0" /></g><path d="M564.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M405.0 40h20" /><g class="non-terminal ">
+<path d="M425.0 40h0.0" /><path d="M564.0 40h0.0" /><rect height="22" width="139" x="425" y="29"></rect><a xlink:href="atlas.html#C-FloatingSuffix"><text x="494.5" y="44">FloatingSuffix</text><text x="494.5" y="44">FloatingSuffix</text></a></g><path d="M564.0 40h20" /></g></g><path d="M584.0 40h20" /><path d="M40.0 40a10 10 0 0 1 10 10v19a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 79h31.25" /><path d="M552.75 79h31.25" /><g class="non-terminal ">
+<path d="M91.25 79h0.0" /><path d="M221.75 79h0.0" /><rect height="22" width="130.5" x="91.25" y="68"></rect><a xlink:href="atlas.html#C-DigitSequence"><text x="156.5" y="83">DigitSequence</text><text x="156.5" y="83">DigitSequence</text></a></g><path d="M221.75 79h10" /><path d="M231.75 79h10" /><g class="non-terminal ">
+<path d="M241.75 79h0.0" /><path d="M363.75 79h0.0" /><rect height="22" width="122" x="241.75" y="68"></rect><a xlink:href="atlas.html#C-ExponentPart"><text x="302.75" y="83">ExponentPart</text><text x="302.75" y="83">ExponentPart</text></a></g><path d="M363.75 79h10" /><g>
+<path d="M373.75 79h0.0" /><path d="M552.75 79h0.0" /><path d="M373.75 79a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M393.75 59h139.0" /></g><path d="M532.75 59a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M373.75 79h20" /><g class="non-terminal ">
+<path d="M393.75 79h0.0" /><path d="M532.75 79h0.0" /><rect height="22" width="139" x="393.75" y="68"></rect><a xlink:href="atlas.html#C-FloatingSuffix"><text x="463.25" y="83">FloatingSuffix</text><text x="463.25" y="83">FloatingSuffix</text></a></g><path d="M532.75 79h20" /></g></g><path d="M584.0 79a10 10 0 0 0 10 -10v-19a10 10 0 0 1 10 -10" /></g><path d="M 604.0 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>DecimalFloatingConstant : FractionalConstant ExponentPart ? FloatingSuffix ? | DigitSequence ExponentPart FloatingSuffix ?;</pre></article>
+<article id="C-FractionalConstant"><h3>FractionalConstant</h3>
+<svg class="railroad-diagram" height="101" viewBox="0 0 496.5 101" width="496.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 40h0.0" /><path d="M456.5 40h0.0" /><path d="M40.0 40h20" /><g>
+<path d="M60.0 40h0.0" /><path d="M436.5 40h0.0" /><g>
+<path d="M60.0 40h0.0" /><path d="M230.5 40h0.0" /><path d="M60.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M80.0 20h130.5" /></g><path d="M210.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M60.0 40h20" /><g class="non-terminal ">
+<path d="M80.0 40h0.0" /><path d="M210.5 40h0.0" /><rect height="22" width="130.5" x="80" y="29"></rect><a xlink:href="atlas.html#C-DigitSequence"><text x="145.25" y="44">DigitSequence</text><text x="145.25" y="44">DigitSequence</text></a></g><path d="M210.5 40h20" /></g><path d="M230.5 40h10" /><g class="terminal ">
+<path d="M240.5 40h0.0" /><path d="M286.0 40h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="240.5" y="29"></rect><text x="263.25" y="44">&apos;.&apos;</text></g><path d="M286.0 40h10" /><path d="M296.0 40h10" /><g class="non-terminal ">
+<path d="M306.0 40h0.0" /><path d="M436.5 40h0.0" /><rect height="22" width="130.5" x="306" y="29"></rect><a xlink:href="atlas.html#C-DigitSequence"><text x="371.25" y="44">DigitSequence</text><text x="371.25" y="44">DigitSequence</text></a></g></g><path d="M436.5 40h20" /><path d="M40.0 40a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 70h90.25" /><path d="M346.25 70h90.25" /><g class="non-terminal ">
+<path d="M150.25 70h0.0" /><path d="M280.75 70h0.0" /><rect height="22" width="130.5" x="150.25" y="59"></rect><a xlink:href="atlas.html#C-DigitSequence"><text x="215.5" y="74">DigitSequence</text><text x="215.5" y="74">DigitSequence</text></a></g><path d="M280.75 70h10" /><path d="M290.75 70h10" /><g class="terminal ">
+<path d="M300.75 70h0.0" /><path d="M346.25 70h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="300.75" y="59"></rect><text x="323.5" y="74">&apos;.&apos;</text></g></g><path d="M436.5 70a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 456.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>FractionalConstant : DigitSequence ? &#x27;.&#x27; DigitSequence | DigitSequence &#x27;.&#x27;;</pre></article>
+<article id="C-DigitSequence"><h3>DigitSequence</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 182.5 71" width="182.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M132.5 31h0.0" /><path d="M50.0 31h10" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M122.5 31h0.0" /><rect height="22" width="62.5" x="60" y="20"></rect><a xlink:href="atlas.html#C-Digit"><text x="91.25" y="35">Digit</text><text x="91.25" y="35">Digit</text></a></g><path d="M122.5 31h10" /><path d="M60.0 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 51h62.5" /></g><path d="M122.5 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M132.5 31h10" /><path d="M 142.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>DigitSequence : Digit +;</pre></article>
+<article id="C-ExponentPart"><h3>ExponentPart</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 398.5 71" width="398.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M348.5 40h0.0" /><g class="terminal ">
+<path d="M50.0 40h0.0" /><path d="M104.0 40h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="29"></rect><text x="77" y="44">[eE]</text></g><path d="M104.0 40h10" /><g>
+<path d="M114.0 40h0.0" /><path d="M208.0 40h0.0" /><path d="M114.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M134.0 20h54.0" /></g><path d="M188.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M114.0 40h20" /><g class="non-terminal ">
+<path d="M134.0 40h0.0" /><path d="M188.0 40h0.0" /><rect height="22" width="54" x="134" y="29"></rect><a xlink:href="atlas.html#C-Sign"><text x="161" y="44">Sign</text><text x="161" y="44">Sign</text></a></g><path d="M188.0 40h20" /></g><path d="M208.0 40h10" /><g class="non-terminal ">
+<path d="M218.0 40h0.0" /><path d="M348.5 40h0.0" /><rect height="22" width="130.5" x="218" y="29"></rect><a xlink:href="atlas.html#C-DigitSequence"><text x="283.25" y="44">DigitSequence</text><text x="283.25" y="44">DigitSequence</text></a></g></g><path d="M348.5 40h10" /><path d="M 358.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>ExponentPart : [eE] Sign ? DigitSequence;</pre></article>
+<article id="C-Sign"><h3>Sign</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 154.0 62" width="154.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M104.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="20"></rect><text x="77" y="35">[+-]</text></g><path d="M104.0 31h10" /><path d="M 114.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>Sign : [+-];</pre></article>
+<article id="C-FloatingSuffix"><h3>FloatingSuffix</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 171.0 62" width="171.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M121.0 31h0.0" /><rect height="22" rx="10" ry="10" width="71" x="50" y="20"></rect><text x="85.5" y="35">[flFL]</text></g><path d="M121.0 31h10" /><path d="M 131.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>FloatingSuffix : [flFL];</pre></article>
+<article id="C-HexadecimalFloatingConstant"><h3>HexadecimalFloatingConstant</h3>
+<svg class="railroad-diagram" height="101" viewBox="0 0 953.0 101" width="953.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M903.0 40h0.0" /><g class="non-terminal ">
+<path d="M50.0 40h0.0" /><path d="M214.5 40h0.0" /><rect height="22" width="164.5" x="50" y="29"></rect><a xlink:href="atlas.html#C-HexadecimalPrefix"><text x="132.25" y="44">HexadecimalPrefix</text><text x="132.25" y="44">HexadecimalPrefix</text></a></g><path d="M214.5 40h10" /><g>
+<path d="M224.5 40h0.0" /><path d="M531.0 40h0.0" /><path d="M224.5 40h20" /><g class="non-terminal ">
+<path d="M244.5 40h0.0" /><path d="M511.0 40h0.0" /><rect height="22" width="266.5" x="244.5" y="29"></rect><a xlink:href="atlas.html#C-HexadecimalFractionalConstant"><text x="377.75" y="44">HexadecimalFractionalConstant</text><text x="377.75" y="44">HexadecimalFractionalConstant</text></a></g><path d="M511.0 40h20" /><path d="M224.5 40a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M244.5 70h21.25" /><path d="M489.75 70h21.25" /><rect height="22" width="224" x="265.75" y="59"></rect><a xlink:href="atlas.html#C-HexadecimalDigitSequence"><text x="377.75" y="74">HexadecimalDigitSequence</text><text x="377.75" y="74">HexadecimalDigitSequence</text></a></g><path d="M511.0 70a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M531.0 40h10" /><g class="non-terminal ">
+<path d="M541.0 40h0.0" /><path d="M714.0 40h0.0" /><rect height="22" width="173" x="541" y="29"></rect><a xlink:href="atlas.html#C-BinaryExponentPart"><text x="627.5" y="44">BinaryExponentPart</text><text x="627.5" y="44">BinaryExponentPart</text></a></g><path d="M714.0 40h10" /><g>
+<path d="M724.0 40h0.0" /><path d="M903.0 40h0.0" /><path d="M724.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M744.0 20h139.0" /></g><path d="M883.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M724.0 40h20" /><g class="non-terminal ">
+<path d="M744.0 40h0.0" /><path d="M883.0 40h0.0" /><rect height="22" width="139" x="744" y="29"></rect><a xlink:href="atlas.html#C-FloatingSuffix"><text x="813.5" y="44">FloatingSuffix</text><text x="813.5" y="44">FloatingSuffix</text></a></g><path d="M883.0 40h20" /></g></g><path d="M903.0 40h10" /><path d="M 913.0 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexadecimalFloatingConstant : HexadecimalPrefix ( HexadecimalFractionalConstant | HexadecimalDigitSequence ) BinaryExponentPart FloatingSuffix ?;</pre></article>
+<article id="C-HexadecimalFractionalConstant"><h3>HexadecimalFractionalConstant</h3>
+<svg class="railroad-diagram" height="101" viewBox="0 0 683.5 101" width="683.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 40h0.0" /><path d="M643.5 40h0.0" /><path d="M40.0 40h20" /><g>
+<path d="M60.0 40h0.0" /><path d="M623.5 40h0.0" /><g>
+<path d="M60.0 40h0.0" /><path d="M324.0 40h0.0" /><path d="M60.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M80.0 20h224.0" /></g><path d="M304.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M60.0 40h20" /><g class="non-terminal ">
+<path d="M80.0 40h0.0" /><path d="M304.0 40h0.0" /><rect height="22" width="224" x="80" y="29"></rect><a xlink:href="atlas.html#C-HexadecimalDigitSequence"><text x="192" y="44">HexadecimalDigitSequence</text><text x="192" y="44">HexadecimalDigitSequence</text></a></g><path d="M304.0 40h20" /></g><path d="M324.0 40h10" /><g class="terminal ">
+<path d="M334.0 40h0.0" /><path d="M379.5 40h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="334" y="29"></rect><text x="356.75" y="44">&apos;.&apos;</text></g><path d="M379.5 40h10" /><path d="M389.5 40h10" /><g class="non-terminal ">
+<path d="M399.5 40h0.0" /><path d="M623.5 40h0.0" /><rect height="22" width="224" x="399.5" y="29"></rect><a xlink:href="atlas.html#C-HexadecimalDigitSequence"><text x="511.5" y="44">HexadecimalDigitSequence</text><text x="511.5" y="44">HexadecimalDigitSequence</text></a></g></g><path d="M623.5 40h20" /><path d="M40.0 40a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 70h137.0" /><path d="M486.5 70h137.0" /><g class="non-terminal ">
+<path d="M197.0 70h0.0" /><path d="M421.0 70h0.0" /><rect height="22" width="224" x="197" y="59"></rect><a xlink:href="atlas.html#C-HexadecimalDigitSequence"><text x="309" y="74">HexadecimalDigitSequence</text><text x="309" y="74">HexadecimalDigitSequence</text></a></g><path d="M421.0 70h10" /><path d="M431.0 70h10" /><g class="terminal ">
+<path d="M441.0 70h0.0" /><path d="M486.5 70h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="441" y="59"></rect><text x="463.75" y="74">&apos;.&apos;</text></g></g><path d="M623.5 70a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 643.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexadecimalFractionalConstant : HexadecimalDigitSequence ? &#x27;.&#x27; HexadecimalDigitSequence | HexadecimalDigitSequence &#x27;.&#x27;;</pre></article>
+<article id="C-HexadecimalDigitSequence"><h3>HexadecimalDigitSequence</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 276.0 71" width="276.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M226.0 31h0.0" /><path d="M50.0 31h10" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M216.0 31h0.0" /><rect height="22" width="156" x="60" y="20"></rect><a xlink:href="atlas.html#C-HexadecimalDigit"><text x="138" y="35">HexadecimalDigit</text><text x="138" y="35">HexadecimalDigit</text></a></g><path d="M216.0 31h10" /><path d="M60.0 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 51h156.0" /></g><path d="M216.0 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M226.0 31h10" /><path d="M 236.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexadecimalDigitSequence : HexadecimalDigit +;</pre></article>
+<article id="C-BinaryExponentPart"><h3>BinaryExponentPart</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 398.5 71" width="398.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M348.5 40h0.0" /><g class="terminal ">
+<path d="M50.0 40h0.0" /><path d="M104.0 40h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="29"></rect><text x="77" y="44">[pP]</text></g><path d="M104.0 40h10" /><g>
+<path d="M114.0 40h0.0" /><path d="M208.0 40h0.0" /><path d="M114.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M134.0 20h54.0" /></g><path d="M188.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M114.0 40h20" /><g class="non-terminal ">
+<path d="M134.0 40h0.0" /><path d="M188.0 40h0.0" /><rect height="22" width="54" x="134" y="29"></rect><a xlink:href="atlas.html#C-Sign"><text x="161" y="44">Sign</text><text x="161" y="44">Sign</text></a></g><path d="M188.0 40h20" /></g><path d="M208.0 40h10" /><g class="non-terminal ">
+<path d="M218.0 40h0.0" /><path d="M348.5 40h0.0" /><rect height="22" width="130.5" x="218" y="29"></rect><a xlink:href="atlas.html#C-DigitSequence"><text x="283.25" y="44">DigitSequence</text><text x="283.25" y="44">DigitSequence</text></a></g></g><path d="M348.5 40h10" /><path d="M 358.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>BinaryExponentPart : [pP] Sign ? DigitSequence;</pre></article>
+<h2>Java</h2>
+<article id="Java-StringLiteral"><h3>StringLiteral</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 407.0 71" width="407.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M357.0 40h0.0" /><g class="terminal ">
+<path d="M50.0 40h0.0" /><path d="M95.5 40h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="50" y="29"></rect><text x="72.75" y="44">&apos;&quot;&apos;</text></g><path d="M95.5 40h10" /><g>
+<path d="M105.5 40h0.0" /><path d="M301.5 40h0.0" /><path d="M105.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M125.5 20h156.0" /></g><path d="M281.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M105.5 40h20" /><g class="non-terminal ">
+<path d="M125.5 40h0.0" /><path d="M281.5 40h0.0" /><rect height="22" width="156" x="125.5" y="29"></rect><a xlink:href="atlas.html#Java-StringCharacters"><text x="203.5" y="44">StringCharacters</text><text x="203.5" y="44">StringCharacters</text></a></g><path d="M281.5 40h20" /></g><path d="M301.5 40h10" /><g class="terminal ">
+<path d="M311.5 40h0.0" /><path d="M357.0 40h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="311.5" y="29"></rect><text x="334.25" y="44">&apos;&quot;&apos;</text></g></g><path d="M357.0 40h10" /><path d="M 367.0 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>StringLiteral : &#x27;&quot;&#x27; StringCharacters ? &#x27;&quot;&#x27;;</pre></article>
+<article id="Java-IntegerLiteral"><h3>IntegerLiteral</h3>
+<svg class="railroad-diagram" height="152" viewBox="0 0 318.5 152" width="318.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M278.5 31h0.0" /><path d="M40.0 31h20" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M258.5 31h0.0" /><rect height="22" width="198.5" x="60" y="20"></rect><a xlink:href="atlas.html#Java-DecimalIntegerLiteral"><text x="159.25" y="35">DecimalIntegerLiteral</text><text x="159.25" y="35">DecimalIntegerLiteral</text></a></g><path d="M258.5 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 61h17.0" /><path d="M241.5 61h17.0" /><rect height="22" width="164.5" x="77" y="50"></rect><a xlink:href="atlas.html#Java-HexIntegerLiteral"><text x="159.25" y="65">HexIntegerLiteral</text><text x="159.25" y="65">HexIntegerLiteral</text></a></g><path d="M258.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 91h8.5" /><path d="M250.0 91h8.5" /><rect height="22" width="181.5" x="68.5" y="80"></rect><a xlink:href="atlas.html#Java-OctalIntegerLiteral"><text x="159.25" y="95">OctalIntegerLiteral</text><text x="159.25" y="95">OctalIntegerLiteral</text></a></g><path d="M258.5 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v70a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 121h4.25" /><path d="M254.25 121h4.25" /><rect height="22" width="190" x="64.25" y="110"></rect><a xlink:href="atlas.html#Java-BinaryIntegerLiteral"><text x="159.25" y="125">BinaryIntegerLiteral</text><text x="159.25" y="125">BinaryIntegerLiteral</text></a></g><path d="M258.5 121a10 10 0 0 0 10 -10v-70a10 10 0 0 1 10 -10" /></g><path d="M 278.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>IntegerLiteral : DecimalIntegerLiteral | HexIntegerLiteral | OctalIntegerLiteral | BinaryIntegerLiteral;</pre></article>
+<article id="Java-FloatingPointLiteral"><h3>FloatingPointLiteral</h3>
+<svg class="railroad-diagram" height="92" viewBox="0 0 403.5 92" width="403.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M363.5 31h0.0" /><path d="M40.0 31h20" /><g class="non-terminal ">
+<path d="M60.0 31h17.0" /><path d="M326.5 31h17.0" /><rect height="22" width="249.5" x="77" y="20"></rect><a xlink:href="atlas.html#Java-DecimalFloatingPointLiteral"><text x="201.75" y="35">DecimalFloatingPointLiteral</text><text x="201.75" y="35">DecimalFloatingPointLiteral</text></a></g><path d="M343.5 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 61h0.0" /><path d="M343.5 61h0.0" /><rect height="22" width="283.5" x="60" y="50"></rect><a xlink:href="atlas.html#Java-HexadecimalFloatingPointLiteral"><text x="201.75" y="65">HexadecimalFloatingPointLiteral</text><text x="201.75" y="65">HexadecimalFloatingPointLiteral</text></a></g><path d="M343.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 363.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>FloatingPointLiteral : DecimalFloatingPointLiteral | HexadecimalFloatingPointLiteral;</pre></article>
+<article id="Java-StringCharacters"><h3>StringCharacters</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 267.5 71" width="267.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M217.5 31h0.0" /><path d="M50.0 31h10" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M207.5 31h0.0" /><rect height="22" width="147.5" x="60" y="20"></rect><a xlink:href="atlas.html#Java-StringCharacter"><text x="133.75" y="35">StringCharacter</text><text x="133.75" y="35">StringCharacter</text></a></g><path d="M207.5 31h10" /><path d="M60.0 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 51h147.5" /></g><path d="M207.5 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M217.5 31h10" /><path d="M 227.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>StringCharacters : StringCharacter +;</pre></article>
+<article id="Java-StringCharacter"><h3>StringCharacter</h3>
+<svg class="railroad-diagram" height="92" viewBox="0 0 259.0 92" width="259.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M219.0 31h0.0" /><path d="M40.0 31h20" /><g class="terminal ">
+<path d="M60.0 31h17.0" /><path d="M182.0 31h17.0" /><rect height="22" rx="10" ry="10" width="105" x="77" y="20"></rect><text x="129.5" y="35">~[&quot;\\\r\n]</text><title>Qualquer caractere fora do conjunto indicado</title></g><path d="M199.0 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 61h0.0" /><path d="M199.0 61h0.0" /><rect height="22" width="139" x="60" y="50"></rect><a xlink:href="atlas.html#Java-EscapeSequence"><text x="129.5" y="65">EscapeSequence</text><text x="129.5" y="65">EscapeSequence</text></a></g><path d="M199.0 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 219.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>StringCharacter : ~ [&quot;\\\r\n] | EscapeSequence;</pre></article>
+<article id="Java-EscapeSequence"><h3>EscapeSequence</h3>
+<svg class="railroad-diagram" height="122" viewBox="0 0 307.5 122" width="307.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M267.5 31h0.0" /><path d="M40.0 31h20" /><g>
+<path d="M60.0 31h0.0" /><path d="M247.5 31h0.0" /><g class="terminal ">
+<path d="M60.0 31h0.0" /><path d="M114.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="60" y="20"></rect><text x="87" y="35">&apos;\\&apos;</text></g><path d="M114.0 31h10" /><path d="M124.0 31h10" /><g class="terminal ">
+<path d="M134.0 31h0.0" /><path d="M247.5 31h0.0" /><rect height="22" rx="10" ry="10" width="113.5" x="134" y="20"></rect><text x="190.75" y="35">[btnfr&quot;&apos;\\]</text></g></g><path d="M247.5 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 61h37.0" /><path d="M210.5 61h37.0" /><rect height="22" width="113.5" x="97" y="50"></rect><a xlink:href="atlas.html#Java-OctalEscape"><text x="153.75" y="65">OctalEscape</text><text x="153.75" y="65">OctalEscape</text></a></g><path d="M247.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 91h28.5" /><path d="M219.0 91h28.5" /><rect height="22" width="130.5" x="88.5" y="80"></rect><a xlink:href="atlas.html#Java-UnicodeEscape"><text x="153.75" y="95">UnicodeEscape</text><text x="153.75" y="95">UnicodeEscape</text></a></g><path d="M247.5 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10" /></g><path d="M 267.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>EscapeSequence : &#x27;\\&#x27; [btnfr&quot;&#x27;\\] | OctalEscape | UnicodeEscape;</pre></article>
+<article id="Java-OctalEscape"><h3>OctalEscape</h3>
+<svg class="railroad-diagram" height="122" viewBox="0 0 557.5 122" width="557.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M517.5 31h0.0" /><path d="M40.0 31h20" /><g>
+<path d="M60.0 31h129.25" /><path d="M368.25 31h129.25" /><g class="terminal ">
+<path d="M189.25 31h0.0" /><path d="M243.25 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="189.25" y="20"></rect><text x="216.25" y="35">&apos;\\&apos;</text></g><path d="M243.25 31h10" /><path d="M253.25 31h10" /><g class="non-terminal ">
+<path d="M263.25 31h0.0" /><path d="M368.25 31h0.0" /><rect height="22" width="105" x="263.25" y="20"></rect><a xlink:href="atlas.html#Java-OctalDigit"><text x="315.75" y="35">OctalDigit</text><text x="315.75" y="35">OctalDigit</text></a></g></g><path d="M497.5 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 61h66.75" /><path d="M430.75 61h66.75" /><g class="terminal ">
+<path d="M126.75 61h0.0" /><path d="M180.75 61h0.0" /><rect height="22" rx="10" ry="10" width="54" x="126.75" y="50"></rect><text x="153.75" y="65">&apos;\\&apos;</text></g><path d="M180.75 61h10" /><path d="M190.75 61h10" /><g class="non-terminal ">
+<path d="M200.75 61h0.0" /><path d="M305.75 61h0.0" /><rect height="22" width="105" x="200.75" y="50"></rect><a xlink:href="atlas.html#Java-OctalDigit"><text x="253.25" y="65">OctalDigit</text><text x="253.25" y="65">OctalDigit</text></a></g><path d="M305.75 61h10" /><path d="M315.75 61h10" /><g class="non-terminal ">
+<path d="M325.75 61h0.0" /><path d="M430.75 61h0.0" /><rect height="22" width="105" x="325.75" y="50"></rect><a xlink:href="atlas.html#Java-OctalDigit"><text x="378.25" y="65">OctalDigit</text><text x="378.25" y="65">OctalDigit</text></a></g></g><path d="M497.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /><path d="M40.0 31a10 10 0 0 1 10 10v40a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 91h0.0" /><path d="M497.5 91h0.0" /><g class="terminal ">
+<path d="M60.0 91h0.0" /><path d="M114.0 91h0.0" /><rect height="22" rx="10" ry="10" width="54" x="60" y="80"></rect><text x="87" y="95">&apos;\\&apos;</text></g><path d="M114.0 91h10" /><path d="M124.0 91h10" /><g class="non-terminal ">
+<path d="M134.0 91h0.0" /><path d="M247.5 91h0.0" /><rect height="22" width="113.5" x="134" y="80"></rect><a xlink:href="atlas.html#Java-ZeroToThree"><text x="190.75" y="95">ZeroToThree</text><text x="190.75" y="95">ZeroToThree</text></a></g><path d="M247.5 91h10" /><path d="M257.5 91h10" /><g class="non-terminal ">
+<path d="M267.5 91h0.0" /><path d="M372.5 91h0.0" /><rect height="22" width="105" x="267.5" y="80"></rect><a xlink:href="atlas.html#Java-OctalDigit"><text x="320" y="95">OctalDigit</text><text x="320" y="95">OctalDigit</text></a></g><path d="M372.5 91h10" /><path d="M382.5 91h10" /><g class="non-terminal ">
+<path d="M392.5 91h0.0" /><path d="M497.5 91h0.0" /><rect height="22" width="105" x="392.5" y="80"></rect><a xlink:href="atlas.html#Java-OctalDigit"><text x="445" y="95">OctalDigit</text><text x="445" y="95">OctalDigit</text></a></g></g><path d="M497.5 91a10 10 0 0 0 10 -10v-40a10 10 0 0 1 10 -10" /></g><path d="M 517.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>OctalEscape : &#x27;\\&#x27; OctalDigit | &#x27;\\&#x27; OctalDigit OctalDigit | &#x27;\\&#x27; ZeroToThree OctalDigit OctalDigit;</pre></article>
+<article id="Java-OctalDigit"><h3>OctalDigit</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 162.5 62" width="162.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M112.5 31h0.0" /><rect height="22" rx="10" ry="10" width="62.5" x="50" y="20"></rect><text x="81.25" y="35">[0-7]</text></g><path d="M112.5 31h10" /><path d="M 122.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>OctalDigit : [0-7];</pre></article>
+<article id="Java-ZeroToThree"><h3>ZeroToThree</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 162.5 62" width="162.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M112.5 31h0.0" /><rect height="22" rx="10" ry="10" width="62.5" x="50" y="20"></rect><text x="81.25" y="35">[0-3]</text></g><path d="M112.5 31h10" /><path d="M 122.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>ZeroToThree : [0-3];</pre></article>
+<article id="Java-UnicodeEscape"><h3>UnicodeEscape</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 671.5 71" width="671.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M621.5 31h0.0" /><g class="terminal ">
+<path d="M50.0 31h0.0" /><path d="M104.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="20"></rect><text x="77" y="35">&apos;\\&apos;</text></g><path d="M104.0 31h10" /><path d="M114.0 31h10" /><g>
+<path d="M124.0 31h0.0" /><path d="M189.5 31h0.0" /><path d="M124.0 31h10" /><g class="terminal ">
+<path d="M134.0 31h0.0" /><path d="M179.5 31h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="134" y="20"></rect><text x="156.75" y="35">&apos;u&apos;</text></g><path d="M179.5 31h10" /><path d="M134.0 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M134.0 51h45.5" /></g><path d="M179.5 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M189.5 31h10" /><path d="M199.5 31h10" /><g class="non-terminal ">
+<path d="M209.5 31h0.0" /><path d="M297.5 31h0.0" /><rect height="22" width="88" x="209.5" y="20"></rect><a xlink:href="atlas.html#Java-HexDigit"><text x="253.5" y="35">HexDigit</text><text x="253.5" y="35">HexDigit</text></a></g><path d="M297.5 31h10" /><path d="M307.5 31h10" /><g class="non-terminal ">
+<path d="M317.5 31h0.0" /><path d="M405.5 31h0.0" /><rect height="22" width="88" x="317.5" y="20"></rect><a xlink:href="atlas.html#Java-HexDigit"><text x="361.5" y="35">HexDigit</text><text x="361.5" y="35">HexDigit</text></a></g><path d="M405.5 31h10" /><path d="M415.5 31h10" /><g class="non-terminal ">
+<path d="M425.5 31h0.0" /><path d="M513.5 31h0.0" /><rect height="22" width="88" x="425.5" y="20"></rect><a xlink:href="atlas.html#Java-HexDigit"><text x="469.5" y="35">HexDigit</text><text x="469.5" y="35">HexDigit</text></a></g><path d="M513.5 31h10" /><path d="M523.5 31h10" /><g class="non-terminal ">
+<path d="M533.5 31h0.0" /><path d="M621.5 31h0.0" /><rect height="22" width="88" x="533.5" y="20"></rect><a xlink:href="atlas.html#Java-HexDigit"><text x="577.5" y="35">HexDigit</text><text x="577.5" y="35">HexDigit</text></a></g></g><path d="M621.5 31h10" /><path d="M 631.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>UnicodeEscape : &#x27;\\&#x27; &#x27;u&#x27; + HexDigit HexDigit HexDigit HexDigit;</pre></article>
+<article id="Java-HexDigit"><h3>HexDigit</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 213.5 62" width="213.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M163.5 31h0.0" /><rect height="22" rx="10" ry="10" width="113.5" x="50" y="20"></rect><text x="106.75" y="35">[0-9a-fA-F]</text></g><path d="M163.5 31h10" /><path d="M 173.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexDigit : [0-9a-fA-F];</pre></article>
+<article id="Java-DecimalIntegerLiteral"><h3>DecimalIntegerLiteral</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 453.5 71" width="453.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M403.5 40h0.0" /><g class="non-terminal ">
+<path d="M50.0 40h0.0" /><path d="M189.0 40h0.0" /><rect height="22" width="139" x="50" y="29"></rect><a xlink:href="atlas.html#Java-DecimalNumeral"><text x="119.5" y="44">DecimalNumeral</text><text x="119.5" y="44">DecimalNumeral</text></a></g><path d="M189.0 40h10" /><g>
+<path d="M199.0 40h0.0" /><path d="M403.5 40h0.0" /><path d="M199.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M219.0 20h164.5" /></g><path d="M383.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M199.0 40h20" /><g class="non-terminal ">
+<path d="M219.0 40h0.0" /><path d="M383.5 40h0.0" /><rect height="22" width="164.5" x="219" y="29"></rect><a xlink:href="atlas.html#Java-IntegerTypeSuffix"><text x="301.25" y="44">IntegerTypeSuffix</text><text x="301.25" y="44">IntegerTypeSuffix</text></a></g><path d="M383.5 40h20" /></g></g><path d="M403.5 40h10" /><path d="M 413.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>DecimalIntegerLiteral : DecimalNumeral IntegerTypeSuffix ?;</pre></article>
+<article id="Java-DecimalNumeral"><h3>DecimalNumeral</h3>
+<svg class="railroad-diagram" height="131" viewBox="0 0 496.5 131" width="496.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M456.5 31h0.0" /><path d="M40.0 31h20" /><g class="terminal ">
+<path d="M60.0 31h165.5" /><path d="M271.0 31h165.5" /><rect height="22" rx="10" ry="10" width="45.5" x="225.5" y="20"></rect><text x="248.25" y="35">&apos;0&apos;</text></g><path d="M436.5 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v19a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 70h0.0" /><path d="M436.5 70h0.0" /><g class="non-terminal ">
+<path d="M60.0 70h0.0" /><path d="M182.0 70h0.0" /><rect height="22" width="122" x="60" y="59"></rect><a xlink:href="atlas.html#Java-NonZeroDigit"><text x="121" y="74">NonZeroDigit</text><text x="121" y="74">NonZeroDigit</text></a></g><path d="M182.0 70h10" /><g>
+<path d="M192.0 70h0.0" /><path d="M436.5 70h0.0" /><path d="M192.0 70h20" /><g>
+<path d="M212.0 70h46.75" /><path d="M369.75 70h46.75" /><path d="M258.75 70a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M278.75 50h71.0" /></g><path d="M349.75 50a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M258.75 70h20" /><g class="non-terminal ">
+<path d="M278.75 70h0.0" /><path d="M349.75 70h0.0" /><rect height="22" width="71" x="278.75" y="59"></rect><a xlink:href="atlas.html#Java-Digits"><text x="314.25" y="74">Digits</text><text x="314.25" y="74">Digits</text></a></g><path d="M349.75 70h20" /></g><path d="M416.5 70h20" /><path d="M192.0 70a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g>
+<path d="M212.0 100h0.0" /><path d="M416.5 100h0.0" /><g class="non-terminal ">
+<path d="M212.0 100h0.0" /><path d="M325.5 100h0.0" /><rect height="22" width="113.5" x="212" y="89"></rect><a xlink:href="atlas.html#Java-Underscores"><text x="268.75" y="104">Underscores</text><text x="268.75" y="104">Underscores</text></a></g><path d="M325.5 100h10" /><path d="M335.5 100h10" /><g class="non-terminal ">
+<path d="M345.5 100h0.0" /><path d="M416.5 100h0.0" /><rect height="22" width="71" x="345.5" y="89"></rect><a xlink:href="atlas.html#Java-Digits"><text x="381" y="104">Digits</text><text x="381" y="104">Digits</text></a></g></g><path d="M416.5 100a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g></g><path d="M436.5 70a10 10 0 0 0 10 -10v-19a10 10 0 0 1 10 -10" /></g><path d="M 456.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>DecimalNumeral : &#x27;0&#x27; | NonZeroDigit ( Digits ? | Underscores Digits );</pre></article>
+<article id="Java-NonZeroDigit"><h3>NonZeroDigit</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 162.5 62" width="162.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M112.5 31h0.0" /><rect height="22" rx="10" ry="10" width="62.5" x="50" y="20"></rect><text x="81.25" y="35">[1-9]</text></g><path d="M112.5 31h10" /><path d="M 122.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>NonZeroDigit : [1-9];</pre></article>
+<article id="Java-Digits"><h3>Digits</h3>
+<svg class="railroad-diagram" height="79" viewBox="0 0 515.0 79" width="515.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 38v20m10 -20v20m-10 -10h20" /></g><path d="M40 48h10" /><g>
+<path d="M50 48h0.0" /><path d="M465.0 48h0.0" /><g class="non-terminal ">
+<path d="M50.0 48h0.0" /><path d="M112.5 48h0.0" /><rect height="22" width="62.5" x="50" y="37"></rect><a xlink:href="atlas.html#Java-Digit"><text x="81.25" y="52">Digit</text><text x="81.25" y="52">Digit</text></a></g><path d="M112.5 48h10" /><g>
+<path d="M122.5 48h0.0" /><path d="M465.0 48h0.0" /><path d="M122.5 48a10 10 0 0 0 10 -10v-8a10 10 0 0 1 10 -10" /><g>
+<path d="M142.5 20h302.5" /></g><path d="M445.0 20a10 10 0 0 1 10 10v8a10 10 0 0 0 10 10" /><path d="M122.5 48h20" /><g>
+<path d="M142.5 48h0.0" /><path d="M445.0 48h0.0" /><g>
+<path d="M142.5 48h0.0" /><path d="M372.5 48h0.0" /><path d="M142.5 48a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M162.5 28h190.0" /></g><path d="M352.5 28a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M142.5 48h20" /><g class="non-terminal ">
+<path d="M162.5 48h0.0" /><path d="M352.5 48h0.0" /><rect height="22" width="190" x="162.5" y="37"></rect><a xlink:href="atlas.html#Java-DigitsAndUnderscores"><text x="257.5" y="52">DigitsAndUnderscores</text><text x="257.5" y="52">DigitsAndUnderscores</text></a></g><path d="M352.5 48h20" /></g><path d="M372.5 48h10" /><g class="non-terminal ">
+<path d="M382.5 48h0.0" /><path d="M445.0 48h0.0" /><rect height="22" width="62.5" x="382.5" y="37"></rect><a xlink:href="atlas.html#Java-Digit"><text x="413.75" y="52">Digit</text><text x="413.75" y="52">Digit</text></a></g></g><path d="M445.0 48h20" /></g></g><path d="M465.0 48h10" /><path d="M 475.0 48 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>Digits : Digit ( DigitsAndUnderscores ? Digit ) ?;</pre></article>
+<article id="Java-Digit"><h3>Digit</h3>
+<svg class="railroad-diagram" height="92" viewBox="0 0 242.0 92" width="242.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M202.0 31h0.0" /><path d="M40.0 31h20" /><g class="terminal ">
+<path d="M60.0 31h38.25" /><path d="M143.75 31h38.25" /><rect height="22" rx="10" ry="10" width="45.5" x="98.25" y="20"></rect><text x="121" y="35">&apos;0&apos;</text></g><path d="M182.0 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="non-terminal ">
+<path d="M60.0 61h0.0" /><path d="M182.0 61h0.0" /><rect height="22" width="122" x="60" y="50"></rect><a xlink:href="atlas.html#Java-NonZeroDigit"><text x="121" y="65">NonZeroDigit</text><text x="121" y="65">NonZeroDigit</text></a></g><path d="M182.0 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 202.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>Digit : &#x27;0&#x27; | NonZeroDigit;</pre></article>
+<article id="Java-DigitsAndUnderscores"><h3>DigitsAndUnderscores</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 284.5 71" width="284.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M234.5 31h0.0" /><path d="M50.0 31h10" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M224.5 31h0.0" /><rect height="22" width="164.5" x="60" y="20"></rect><a xlink:href="atlas.html#Java-DigitOrUnderscore"><text x="142.25" y="35">DigitOrUnderscore</text><text x="142.25" y="35">DigitOrUnderscore</text></a></g><path d="M224.5 31h10" /><path d="M60.0 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 51h164.5" /></g><path d="M224.5 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M234.5 31h10" /><path d="M 244.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>DigitsAndUnderscores : DigitOrUnderscore +;</pre></article>
+<article id="Java-DigitOrUnderscore"><h3>DigitOrUnderscore</h3>
+<svg class="railroad-diagram" height="92" viewBox="0 0 182.5 92" width="182.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M142.5 31h0.0" /><path d="M40.0 31h20" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M122.5 31h0.0" /><rect height="22" width="62.5" x="60" y="20"></rect><a xlink:href="atlas.html#Java-Digit"><text x="91.25" y="35">Digit</text><text x="91.25" y="35">Digit</text></a></g><path d="M122.5 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="terminal ">
+<path d="M60.0 61h8.5" /><path d="M114.0 61h8.5" /><rect height="22" rx="10" ry="10" width="45.5" x="68.5" y="50"></rect><text x="91.25" y="65">&apos;_&apos;</text></g><path d="M122.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 142.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>DigitOrUnderscore : Digit | &#x27;_&#x27;;</pre></article>
+<article id="Java-Underscores"><h3>Underscores</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 165.5 71" width="165.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M115.5 31h0.0" /><path d="M50.0 31h10" /><g class="terminal ">
+<path d="M60.0 31h0.0" /><path d="M105.5 31h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="60" y="20"></rect><text x="82.75" y="35">&apos;_&apos;</text></g><path d="M105.5 31h10" /><path d="M60.0 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 51h45.5" /></g><path d="M105.5 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M115.5 31h10" /><path d="M 125.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>Underscores : &#x27;_&#x27; +;</pre></article>
+<article id="Java-IntegerTypeSuffix"><h3>IntegerTypeSuffix</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 154.0 62" width="154.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M104.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="20"></rect><text x="77" y="35">[lL]</text></g><path d="M104.0 31h10" /><path d="M 114.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>IntegerTypeSuffix : [lL];</pre></article>
+<article id="Java-HexIntegerLiteral"><h3>HexIntegerLiteral</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 419.5 71" width="419.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M369.5 40h0.0" /><g class="non-terminal ">
+<path d="M50.0 40h0.0" /><path d="M155.0 40h0.0" /><rect height="22" width="105" x="50" y="29"></rect><a xlink:href="atlas.html#Java-HexNumeral"><text x="102.5" y="44">HexNumeral</text><text x="102.5" y="44">HexNumeral</text></a></g><path d="M155.0 40h10" /><g>
+<path d="M165.0 40h0.0" /><path d="M369.5 40h0.0" /><path d="M165.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M185.0 20h164.5" /></g><path d="M349.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M165.0 40h20" /><g class="non-terminal ">
+<path d="M185.0 40h0.0" /><path d="M349.5 40h0.0" /><rect height="22" width="164.5" x="185" y="29"></rect><a xlink:href="atlas.html#Java-IntegerTypeSuffix"><text x="267.25" y="44">IntegerTypeSuffix</text><text x="267.25" y="44">IntegerTypeSuffix</text></a></g><path d="M349.5 40h20" /></g></g><path d="M369.5 40h10" /><path d="M 379.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexIntegerLiteral : HexNumeral IntegerTypeSuffix ?;</pre></article>
+<article id="Java-HexNumeral"><h3>HexNumeral</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 336.0 62" width="336.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M286.0 31h0.0" /><g class="terminal ">
+<path d="M50.0 31h0.0" /><path d="M95.5 31h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="50" y="20"></rect><text x="72.75" y="35">&apos;0&apos;</text></g><path d="M95.5 31h10" /><path d="M105.5 31h10" /><g class="terminal ">
+<path d="M115.5 31h0.0" /><path d="M169.5 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="115.5" y="20"></rect><text x="142.5" y="35">[xX]</text></g><path d="M169.5 31h10" /><path d="M179.5 31h10" /><g class="non-terminal ">
+<path d="M189.5 31h0.0" /><path d="M286.0 31h0.0" /><rect height="22" width="96.5" x="189.5" y="20"></rect><a xlink:href="atlas.html#Java-HexDigits"><text x="237.75" y="35">HexDigits</text><text x="237.75" y="35">HexDigits</text></a></g></g><path d="M286.0 31h10" /><path d="M 296.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexNumeral : &#x27;0&#x27; [xX] HexDigits;</pre></article>
+<article id="Java-HexDigits"><h3>HexDigits</h3>
+<svg class="railroad-diagram" height="79" viewBox="0 0 591.5 79" width="591.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 38v20m10 -20v20m-10 -10h20" /></g><path d="M40 48h10" /><g>
+<path d="M50 48h0.0" /><path d="M541.5 48h0.0" /><g class="non-terminal ">
+<path d="M50.0 48h0.0" /><path d="M138.0 48h0.0" /><rect height="22" width="88" x="50" y="37"></rect><a xlink:href="atlas.html#Java-HexDigit"><text x="94" y="52">HexDigit</text><text x="94" y="52">HexDigit</text></a></g><path d="M138.0 48h10" /><g>
+<path d="M148.0 48h0.0" /><path d="M541.5 48h0.0" /><path d="M148.0 48a10 10 0 0 0 10 -10v-8a10 10 0 0 1 10 -10" /><g>
+<path d="M168.0 20h353.5" /></g><path d="M521.5 20a10 10 0 0 1 10 10v8a10 10 0 0 0 10 10" /><path d="M148.0 48h20" /><g>
+<path d="M168.0 48h0.0" /><path d="M521.5 48h0.0" /><g>
+<path d="M168.0 48h0.0" /><path d="M423.5 48h0.0" /><path d="M168.0 48a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M188.0 28h215.5" /></g><path d="M403.5 28a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M168.0 48h20" /><g class="non-terminal ">
+<path d="M188.0 48h0.0" /><path d="M403.5 48h0.0" /><rect height="22" width="215.5" x="188" y="37"></rect><a xlink:href="atlas.html#Java-HexDigitsAndUnderscores"><text x="295.75" y="52">HexDigitsAndUnderscores</text><text x="295.75" y="52">HexDigitsAndUnderscores</text></a></g><path d="M403.5 48h20" /></g><path d="M423.5 48h10" /><g class="non-terminal ">
+<path d="M433.5 48h0.0" /><path d="M521.5 48h0.0" /><rect height="22" width="88" x="433.5" y="37"></rect><a xlink:href="atlas.html#Java-HexDigit"><text x="477.5" y="52">HexDigit</text><text x="477.5" y="52">HexDigit</text></a></g></g><path d="M521.5 48h20" /></g></g><path d="M541.5 48h10" /><path d="M 551.5 48 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexDigits : HexDigit ( HexDigitsAndUnderscores ? HexDigit ) ?;</pre></article>
+<article id="Java-HexDigitsAndUnderscores"><h3>HexDigitsAndUnderscores</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 310.0 71" width="310.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M260.0 31h0.0" /><path d="M50.0 31h10" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M250.0 31h0.0" /><rect height="22" width="190" x="60" y="20"></rect><a xlink:href="atlas.html#Java-HexDigitOrUnderscore"><text x="155" y="35">HexDigitOrUnderscore</text><text x="155" y="35">HexDigitOrUnderscore</text></a></g><path d="M250.0 31h10" /><path d="M60.0 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 51h190.0" /></g><path d="M250.0 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M260.0 31h10" /><path d="M 270.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexDigitsAndUnderscores : HexDigitOrUnderscore +;</pre></article>
+<article id="Java-HexDigitOrUnderscore"><h3>HexDigitOrUnderscore</h3>
+<svg class="railroad-diagram" height="92" viewBox="0 0 208.0 92" width="208.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M168.0 31h0.0" /><path d="M40.0 31h20" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M148.0 31h0.0" /><rect height="22" width="88" x="60" y="20"></rect><a xlink:href="atlas.html#Java-HexDigit"><text x="104" y="35">HexDigit</text><text x="104" y="35">HexDigit</text></a></g><path d="M148.0 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="terminal ">
+<path d="M60.0 61h21.25" /><path d="M126.75 61h21.25" /><rect height="22" rx="10" ry="10" width="45.5" x="81.25" y="50"></rect><text x="104" y="65">&apos;_&apos;</text></g><path d="M148.0 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 168.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexDigitOrUnderscore : HexDigit | &#x27;_&#x27;;</pre></article>
+<article id="Java-OctalIntegerLiteral"><h3>OctalIntegerLiteral</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 436.5 71" width="436.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M386.5 40h0.0" /><g class="non-terminal ">
+<path d="M50.0 40h0.0" /><path d="M172.0 40h0.0" /><rect height="22" width="122" x="50" y="29"></rect><a xlink:href="atlas.html#Java-OctalNumeral"><text x="111" y="44">OctalNumeral</text><text x="111" y="44">OctalNumeral</text></a></g><path d="M172.0 40h10" /><g>
+<path d="M182.0 40h0.0" /><path d="M386.5 40h0.0" /><path d="M182.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M202.0 20h164.5" /></g><path d="M366.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M182.0 40h20" /><g class="non-terminal ">
+<path d="M202.0 40h0.0" /><path d="M366.5 40h0.0" /><rect height="22" width="164.5" x="202" y="29"></rect><a xlink:href="atlas.html#Java-IntegerTypeSuffix"><text x="284.25" y="44">IntegerTypeSuffix</text><text x="284.25" y="44">IntegerTypeSuffix</text></a></g><path d="M366.5 40h20" /></g></g><path d="M386.5 40h10" /><path d="M 396.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>OctalIntegerLiteral : OctalNumeral IntegerTypeSuffix ?;</pre></article>
+<article id="Java-OctalNumeral"><h3>OctalNumeral</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 432.5 71" width="432.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M382.5 40h0.0" /><g class="terminal ">
+<path d="M50.0 40h0.0" /><path d="M95.5 40h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="50" y="29"></rect><text x="72.75" y="44">&apos;0&apos;</text></g><path d="M95.5 40h10" /><g>
+<path d="M105.5 40h0.0" /><path d="M259.0 40h0.0" /><path d="M105.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M125.5 20h113.5" /></g><path d="M239.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M105.5 40h20" /><g class="non-terminal ">
+<path d="M125.5 40h0.0" /><path d="M239.0 40h0.0" /><rect height="22" width="113.5" x="125.5" y="29"></rect><a xlink:href="atlas.html#Java-Underscores"><text x="182.25" y="44">Underscores</text><text x="182.25" y="44">Underscores</text></a></g><path d="M239.0 40h20" /></g><path d="M259.0 40h10" /><g class="non-terminal ">
+<path d="M269.0 40h0.0" /><path d="M382.5 40h0.0" /><rect height="22" width="113.5" x="269" y="29"></rect><a xlink:href="atlas.html#Java-OctalDigits"><text x="325.75" y="44">OctalDigits</text><text x="325.75" y="44">OctalDigits</text></a></g></g><path d="M382.5 40h10" /><path d="M 392.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>OctalNumeral : &#x27;0&#x27; Underscores ? OctalDigits;</pre></article>
+<article id="Java-OctalDigits"><h3>OctalDigits</h3>
+<svg class="railroad-diagram" height="79" viewBox="0 0 642.5 79" width="642.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 38v20m10 -20v20m-10 -10h20" /></g><path d="M40 48h10" /><g>
+<path d="M50 48h0.0" /><path d="M592.5 48h0.0" /><g class="non-terminal ">
+<path d="M50.0 48h0.0" /><path d="M155.0 48h0.0" /><rect height="22" width="105" x="50" y="37"></rect><a xlink:href="atlas.html#Java-OctalDigit"><text x="102.5" y="52">OctalDigit</text><text x="102.5" y="52">OctalDigit</text></a></g><path d="M155.0 48h10" /><g>
+<path d="M165.0 48h0.0" /><path d="M592.5 48h0.0" /><path d="M165.0 48a10 10 0 0 0 10 -10v-8a10 10 0 0 1 10 -10" /><g>
+<path d="M185.0 20h387.5" /></g><path d="M572.5 20a10 10 0 0 1 10 10v8a10 10 0 0 0 10 10" /><path d="M165.0 48h20" /><g>
+<path d="M185.0 48h0.0" /><path d="M572.5 48h0.0" /><g>
+<path d="M185.0 48h0.0" /><path d="M457.5 48h0.0" /><path d="M185.0 48a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M205.0 28h232.5" /></g><path d="M437.5 28a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M185.0 48h20" /><g class="non-terminal ">
+<path d="M205.0 48h0.0" /><path d="M437.5 48h0.0" /><rect height="22" width="232.5" x="205" y="37"></rect><a xlink:href="atlas.html#Java-OctalDigitsAndUnderscores"><text x="321.25" y="52">OctalDigitsAndUnderscores</text><text x="321.25" y="52">OctalDigitsAndUnderscores</text></a></g><path d="M437.5 48h20" /></g><path d="M457.5 48h10" /><g class="non-terminal ">
+<path d="M467.5 48h0.0" /><path d="M572.5 48h0.0" /><rect height="22" width="105" x="467.5" y="37"></rect><a xlink:href="atlas.html#Java-OctalDigit"><text x="520" y="52">OctalDigit</text><text x="520" y="52">OctalDigit</text></a></g></g><path d="M572.5 48h20" /></g></g><path d="M592.5 48h10" /><path d="M 602.5 48 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>OctalDigits : OctalDigit ( OctalDigitsAndUnderscores ? OctalDigit ) ?;</pre></article>
+<article id="Java-OctalDigitsAndUnderscores"><h3>OctalDigitsAndUnderscores</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 327.0 71" width="327.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M277.0 31h0.0" /><path d="M50.0 31h10" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M267.0 31h0.0" /><rect height="22" width="207" x="60" y="20"></rect><a xlink:href="atlas.html#Java-OctalDigitOrUnderscore"><text x="163.5" y="35">OctalDigitOrUnderscore</text><text x="163.5" y="35">OctalDigitOrUnderscore</text></a></g><path d="M267.0 31h10" /><path d="M60.0 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 51h207.0" /></g><path d="M267.0 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M277.0 31h10" /><path d="M 287.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>OctalDigitsAndUnderscores : OctalDigitOrUnderscore +;</pre></article>
+<article id="Java-OctalDigitOrUnderscore"><h3>OctalDigitOrUnderscore</h3>
+<svg class="railroad-diagram" height="92" viewBox="0 0 225.0 92" width="225.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M185.0 31h0.0" /><path d="M40.0 31h20" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M165.0 31h0.0" /><rect height="22" width="105" x="60" y="20"></rect><a xlink:href="atlas.html#Java-OctalDigit"><text x="112.5" y="35">OctalDigit</text><text x="112.5" y="35">OctalDigit</text></a></g><path d="M165.0 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="terminal ">
+<path d="M60.0 61h29.75" /><path d="M135.25 61h29.75" /><rect height="22" rx="10" ry="10" width="45.5" x="89.75" y="50"></rect><text x="112.5" y="65">&apos;_&apos;</text></g><path d="M165.0 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 185.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>OctalDigitOrUnderscore : OctalDigit | &#x27;_&#x27;;</pre></article>
+<article id="Java-BinaryIntegerLiteral"><h3>BinaryIntegerLiteral</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 445.0 71" width="445.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M395.0 40h0.0" /><g class="non-terminal ">
+<path d="M50.0 40h0.0" /><path d="M180.5 40h0.0" /><rect height="22" width="130.5" x="50" y="29"></rect><a xlink:href="atlas.html#Java-BinaryNumeral"><text x="115.25" y="44">BinaryNumeral</text><text x="115.25" y="44">BinaryNumeral</text></a></g><path d="M180.5 40h10" /><g>
+<path d="M190.5 40h0.0" /><path d="M395.0 40h0.0" /><path d="M190.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M210.5 20h164.5" /></g><path d="M375.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M190.5 40h20" /><g class="non-terminal ">
+<path d="M210.5 40h0.0" /><path d="M375.0 40h0.0" /><rect height="22" width="164.5" x="210.5" y="29"></rect><a xlink:href="atlas.html#Java-IntegerTypeSuffix"><text x="292.75" y="44">IntegerTypeSuffix</text><text x="292.75" y="44">IntegerTypeSuffix</text></a></g><path d="M375.0 40h20" /></g></g><path d="M395.0 40h10" /><path d="M 405.0 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>BinaryIntegerLiteral : BinaryNumeral IntegerTypeSuffix ?;</pre></article>
+<article id="Java-BinaryNumeral"><h3>BinaryNumeral</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 361.5 62" width="361.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M311.5 31h0.0" /><g class="terminal ">
+<path d="M50.0 31h0.0" /><path d="M95.5 31h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="50" y="20"></rect><text x="72.75" y="35">&apos;0&apos;</text></g><path d="M95.5 31h10" /><path d="M105.5 31h10" /><g class="terminal ">
+<path d="M115.5 31h0.0" /><path d="M169.5 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="115.5" y="20"></rect><text x="142.5" y="35">[bB]</text></g><path d="M169.5 31h10" /><path d="M179.5 31h10" /><g class="non-terminal ">
+<path d="M189.5 31h0.0" /><path d="M311.5 31h0.0" /><rect height="22" width="122" x="189.5" y="20"></rect><a xlink:href="atlas.html#Java-BinaryDigits"><text x="250.5" y="35">BinaryDigits</text><text x="250.5" y="35">BinaryDigits</text></a></g></g><path d="M311.5 31h10" /><path d="M 321.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>BinaryNumeral : &#x27;0&#x27; [bB] BinaryDigits;</pre></article>
+<article id="Java-BinaryDigits"><h3>BinaryDigits</h3>
+<svg class="railroad-diagram" height="79" viewBox="0 0 668.0 79" width="668.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 38v20m10 -20v20m-10 -10h20" /></g><path d="M40 48h10" /><g>
+<path d="M50 48h0.0" /><path d="M618.0 48h0.0" /><g class="non-terminal ">
+<path d="M50.0 48h0.0" /><path d="M163.5 48h0.0" /><rect height="22" width="113.5" x="50" y="37"></rect><a xlink:href="atlas.html#Java-BinaryDigit"><text x="106.75" y="52">BinaryDigit</text><text x="106.75" y="52">BinaryDigit</text></a></g><path d="M163.5 48h10" /><g>
+<path d="M173.5 48h0.0" /><path d="M618.0 48h0.0" /><path d="M173.5 48a10 10 0 0 0 10 -10v-8a10 10 0 0 1 10 -10" /><g>
+<path d="M193.5 20h404.5" /></g><path d="M598.0 20a10 10 0 0 1 10 10v8a10 10 0 0 0 10 10" /><path d="M173.5 48h20" /><g>
+<path d="M193.5 48h0.0" /><path d="M598.0 48h0.0" /><g>
+<path d="M193.5 48h0.0" /><path d="M474.5 48h0.0" /><path d="M193.5 48a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M213.5 28h241.0" /></g><path d="M454.5 28a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M193.5 48h20" /><g class="non-terminal ">
+<path d="M213.5 48h0.0" /><path d="M454.5 48h0.0" /><rect height="22" width="241" x="213.5" y="37"></rect><a xlink:href="atlas.html#Java-BinaryDigitsAndUnderscores"><text x="334" y="52">BinaryDigitsAndUnderscores</text><text x="334" y="52">BinaryDigitsAndUnderscores</text></a></g><path d="M454.5 48h20" /></g><path d="M474.5 48h10" /><g class="non-terminal ">
+<path d="M484.5 48h0.0" /><path d="M598.0 48h0.0" /><rect height="22" width="113.5" x="484.5" y="37"></rect><a xlink:href="atlas.html#Java-BinaryDigit"><text x="541.25" y="52">BinaryDigit</text><text x="541.25" y="52">BinaryDigit</text></a></g></g><path d="M598.0 48h20" /></g></g><path d="M618.0 48h10" /><path d="M 628.0 48 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>BinaryDigits : BinaryDigit ( BinaryDigitsAndUnderscores ? BinaryDigit ) ?;</pre></article>
+<article id="Java-BinaryDigit"><h3>BinaryDigit</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 154.0 62" width="154.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M104.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="20"></rect><text x="77" y="35">[01]</text></g><path d="M104.0 31h10" /><path d="M 114.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>BinaryDigit : [01];</pre></article>
+<article id="Java-BinaryDigitsAndUnderscores"><h3>BinaryDigitsAndUnderscores</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 335.5 71" width="335.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M285.5 31h0.0" /><path d="M50.0 31h10" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M275.5 31h0.0" /><rect height="22" width="215.5" x="60" y="20"></rect><a xlink:href="atlas.html#Java-BinaryDigitOrUnderscore"><text x="167.75" y="35">BinaryDigitOrUnderscore</text><text x="167.75" y="35">BinaryDigitOrUnderscore</text></a></g><path d="M275.5 31h10" /><path d="M60.0 31a10 10 0 0 0 -10 10v0a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 51h215.5" /></g><path d="M275.5 51a10 10 0 0 0 10 -10v0a10 10 0 0 0 -10 -10" /></g><path d="M285.5 31h10" /><path d="M 295.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>BinaryDigitsAndUnderscores : BinaryDigitOrUnderscore +;</pre></article>
+<article id="Java-BinaryDigitOrUnderscore"><h3>BinaryDigitOrUnderscore</h3>
+<svg class="railroad-diagram" height="92" viewBox="0 0 233.5 92" width="233.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 31h0.0" /><path d="M193.5 31h0.0" /><path d="M40.0 31h20" /><g class="non-terminal ">
+<path d="M60.0 31h0.0" /><path d="M173.5 31h0.0" /><rect height="22" width="113.5" x="60" y="20"></rect><a xlink:href="atlas.html#Java-BinaryDigit"><text x="116.75" y="35">BinaryDigit</text><text x="116.75" y="35">BinaryDigit</text></a></g><path d="M173.5 31h20" /><path d="M40.0 31a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10" /><g class="terminal ">
+<path d="M60.0 61h34.0" /><path d="M139.5 61h34.0" /><rect height="22" rx="10" ry="10" width="45.5" x="94" y="50"></rect><text x="116.75" y="65">&apos;_&apos;</text></g><path d="M173.5 61a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10" /></g><path d="M 193.5 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>BinaryDigitOrUnderscore : BinaryDigit | &#x27;_&#x27;;</pre></article>
+<article id="Java-DecimalFloatingPointLiteral"><h3>DecimalFloatingPointLiteral</h3>
+<svg class="railroad-diagram" height="179" viewBox="0 0 727.0 179" width="727.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 40h0.0" /><path d="M687.0 40h0.0" /><path d="M40.0 40h20" /><g>
+<path d="M60.0 40h0.0" /><path d="M667.0 40h0.0" /><g class="non-terminal ">
+<path d="M60.0 40h0.0" /><path d="M131.0 40h0.0" /><rect height="22" width="71" x="60" y="29"></rect><a xlink:href="atlas.html#Java-Digits"><text x="95.5" y="44">Digits</text><text x="95.5" y="44">Digits</text></a></g><path d="M131.0 40h10" /><path d="M141.0 40h10" /><g class="terminal ">
+<path d="M151.0 40h0.0" /><path d="M196.5 40h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="151" y="29"></rect><text x="173.75" y="44">&apos;.&apos;</text></g><path d="M196.5 40h10" /><g>
+<path d="M206.5 40h0.0" /><path d="M317.5 40h0.0" /><path d="M206.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M226.5 20h71.0" /></g><path d="M297.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M206.5 40h20" /><g class="non-terminal ">
+<path d="M226.5 40h0.0" /><path d="M297.5 40h0.0" /><rect height="22" width="71" x="226.5" y="29"></rect><a xlink:href="atlas.html#Java-Digits"><text x="262" y="44">Digits</text><text x="262" y="44">Digits</text></a></g><path d="M297.5 40h20" /></g><g>
+<path d="M317.5 40h0.0" /><path d="M479.5 40h0.0" /><path d="M317.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M337.5 20h122.0" /></g><path d="M459.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M317.5 40h20" /><g class="non-terminal ">
+<path d="M337.5 40h0.0" /><path d="M459.5 40h0.0" /><rect height="22" width="122" x="337.5" y="29"></rect><a xlink:href="atlas.html#Java-ExponentPart"><text x="398.5" y="44">ExponentPart</text><text x="398.5" y="44">ExponentPart</text></a></g><path d="M459.5 40h20" /></g><g>
+<path d="M479.5 40h0.0" /><path d="M667.0 40h0.0" /><path d="M479.5 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M499.5 20h147.5" /></g><path d="M647.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M479.5 40h20" /><g class="non-terminal ">
+<path d="M499.5 40h0.0" /><path d="M647.0 40h0.0" /><rect height="22" width="147.5" x="499.5" y="29"></rect><a xlink:href="atlas.html#Java-FloatTypeSuffix"><text x="573.25" y="44">FloatTypeSuffix</text><text x="573.25" y="44">FloatTypeSuffix</text></a></g><path d="M647.0 40h20" /></g></g><path d="M667.0 40h20" /><path d="M40.0 40a10 10 0 0 1 10 10v19a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 79h55.5" /><path d="M611.5 79h55.5" /><g class="terminal ">
+<path d="M115.5 79h0.0" /><path d="M161.0 79h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="115.5" y="68"></rect><text x="138.25" y="83">&apos;.&apos;</text></g><path d="M161.0 79h10" /><path d="M171.0 79h10" /><g class="non-terminal ">
+<path d="M181.0 79h0.0" /><path d="M252.0 79h0.0" /><rect height="22" width="71" x="181" y="68"></rect><a xlink:href="atlas.html#Java-Digits"><text x="216.5" y="83">Digits</text><text x="216.5" y="83">Digits</text></a></g><path d="M252.0 79h10" /><g>
+<path d="M262.0 79h0.0" /><path d="M424.0 79h0.0" /><path d="M262.0 79a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M282.0 59h122.0" /></g><path d="M404.0 59a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M262.0 79h20" /><g class="non-terminal ">
+<path d="M282.0 79h0.0" /><path d="M404.0 79h0.0" /><rect height="22" width="122" x="282" y="68"></rect><a xlink:href="atlas.html#Java-ExponentPart"><text x="343" y="83">ExponentPart</text><text x="343" y="83">ExponentPart</text></a></g><path d="M404.0 79h20" /></g><g>
+<path d="M424.0 79h0.0" /><path d="M611.5 79h0.0" /><path d="M424.0 79a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M444.0 59h147.5" /></g><path d="M591.5 59a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M424.0 79h20" /><g class="non-terminal ">
+<path d="M444.0 79h0.0" /><path d="M591.5 79h0.0" /><rect height="22" width="147.5" x="444" y="68"></rect><a xlink:href="atlas.html#Java-FloatTypeSuffix"><text x="517.75" y="83">FloatTypeSuffix</text><text x="517.75" y="83">FloatTypeSuffix</text></a></g><path d="M591.5 79h20" /></g></g><path d="M667.0 79a10 10 0 0 0 10 -10v-19a10 10 0 0 1 10 -10" /><path d="M40.0 40a10 10 0 0 1 10 10v58a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 118h98.25" /><path d="M568.75 118h98.25" /><g class="non-terminal ">
+<path d="M158.25 118h0.0" /><path d="M229.25 118h0.0" /><rect height="22" width="71" x="158.25" y="107"></rect><a xlink:href="atlas.html#Java-Digits"><text x="193.75" y="122">Digits</text><text x="193.75" y="122">Digits</text></a></g><path d="M229.25 118h10" /><path d="M239.25 118h10" /><g class="non-terminal ">
+<path d="M249.25 118h0.0" /><path d="M371.25 118h0.0" /><rect height="22" width="122" x="249.25" y="107"></rect><a xlink:href="atlas.html#Java-ExponentPart"><text x="310.25" y="122">ExponentPart</text><text x="310.25" y="122">ExponentPart</text></a></g><path d="M371.25 118h10" /><g>
+<path d="M381.25 118h0.0" /><path d="M568.75 118h0.0" /><path d="M381.25 118a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M401.25 98h147.5" /></g><path d="M548.75 98a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M381.25 118h20" /><g class="non-terminal ">
+<path d="M401.25 118h0.0" /><path d="M548.75 118h0.0" /><rect height="22" width="147.5" x="401.25" y="107"></rect><a xlink:href="atlas.html#Java-FloatTypeSuffix"><text x="475" y="122">FloatTypeSuffix</text><text x="475" y="122">FloatTypeSuffix</text></a></g><path d="M548.75 118h20" /></g></g><path d="M667.0 118a10 10 0 0 0 10 -10v-58a10 10 0 0 1 10 -10" /><path d="M40.0 40a10 10 0 0 1 10 10v88a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 148h184.25" /><path d="M482.75 148h184.25" /><g class="non-terminal ">
+<path d="M244.25 148h0.0" /><path d="M315.25 148h0.0" /><rect height="22" width="71" x="244.25" y="137"></rect><a xlink:href="atlas.html#Java-Digits"><text x="279.75" y="152">Digits</text><text x="279.75" y="152">Digits</text></a></g><path d="M315.25 148h10" /><path d="M325.25 148h10" /><g class="non-terminal ">
+<path d="M335.25 148h0.0" /><path d="M482.75 148h0.0" /><rect height="22" width="147.5" x="335.25" y="137"></rect><a xlink:href="atlas.html#Java-FloatTypeSuffix"><text x="409" y="152">FloatTypeSuffix</text><text x="409" y="152">FloatTypeSuffix</text></a></g></g><path d="M667.0 148a10 10 0 0 0 10 -10v-88a10 10 0 0 1 10 -10" /></g><path d="M 687.0 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>DecimalFloatingPointLiteral : Digits &#x27;.&#x27; Digits ? ExponentPart ? FloatTypeSuffix ? | &#x27;.&#x27; Digits ExponentPart ? FloatTypeSuffix ? | Digits ExponentPart FloatTypeSuffix ? | Digits FloatTypeSuffix;</pre></article>
+<article id="Java-ExponentPart"><h3>ExponentPart</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 415.0 62" width="415.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M365.0 31h0.0" /><g class="non-terminal ">
+<path d="M50.0 31h0.0" /><path d="M214.5 31h0.0" /><rect height="22" width="164.5" x="50" y="20"></rect><a xlink:href="atlas.html#Java-ExponentIndicator"><text x="132.25" y="35">ExponentIndicator</text><text x="132.25" y="35">ExponentIndicator</text></a></g><path d="M214.5 31h10" /><path d="M224.5 31h10" /><g class="non-terminal ">
+<path d="M234.5 31h0.0" /><path d="M365.0 31h0.0" /><rect height="22" width="130.5" x="234.5" y="20"></rect><a xlink:href="atlas.html#Java-SignedInteger"><text x="299.75" y="35">SignedInteger</text><text x="299.75" y="35">SignedInteger</text></a></g></g><path d="M365.0 31h10" /><path d="M 375.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>ExponentPart : ExponentIndicator SignedInteger;</pre></article>
+<article id="Java-ExponentIndicator"><h3>ExponentIndicator</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 154.0 62" width="154.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M104.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="20"></rect><text x="77" y="35">[eE]</text></g><path d="M104.0 31h10" /><path d="M 114.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>ExponentIndicator : [eE];</pre></article>
+<article id="Java-SignedInteger"><h3>SignedInteger</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 275.0 71" width="275.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M225.0 40h0.0" /><g>
+<path d="M50.0 40h0.0" /><path d="M144.0 40h0.0" /><path d="M50.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M70.0 20h54.0" /></g><path d="M124.0 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M50.0 40h20" /><g class="non-terminal ">
+<path d="M70.0 40h0.0" /><path d="M124.0 40h0.0" /><rect height="22" width="54" x="70" y="29"></rect><a xlink:href="atlas.html#Java-Sign"><text x="97" y="44">Sign</text><text x="97" y="44">Sign</text></a></g><path d="M124.0 40h20" /></g><path d="M144.0 40h10" /><g class="non-terminal ">
+<path d="M154.0 40h0.0" /><path d="M225.0 40h0.0" /><rect height="22" width="71" x="154" y="29"></rect><a xlink:href="atlas.html#Java-Digits"><text x="189.5" y="44">Digits</text><text x="189.5" y="44">Digits</text></a></g></g><path d="M225.0 40h10" /><path d="M 235.0 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>SignedInteger : Sign ? Digits;</pre></article>
+<article id="Java-Sign"><h3>Sign</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 154.0 62" width="154.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M104.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="20"></rect><text x="77" y="35">[+-]</text></g><path d="M104.0 31h10" /><path d="M 114.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>Sign : [+-];</pre></article>
+<article id="Java-FloatTypeSuffix"><h3>FloatTypeSuffix</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 171.0 62" width="171.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M121.0 31h0.0" /><rect height="22" rx="10" ry="10" width="71" x="50" y="20"></rect><text x="85.5" y="35">[fFdD]</text></g><path d="M121.0 31h10" /><path d="M 131.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>FloatTypeSuffix : [fFdD];</pre></article>
+<article id="Java-HexadecimalFloatingPointLiteral"><h3>HexadecimalFloatingPointLiteral</h3>
+<svg class="railroad-diagram" height="71" viewBox="0 0 595.5 71" width="595.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><path d="M40 40h10" /><g>
+<path d="M50 40h0.0" /><path d="M545.5 40h0.0" /><g class="non-terminal ">
+<path d="M50.0 40h0.0" /><path d="M189.0 40h0.0" /><rect height="22" width="139" x="50" y="29"></rect><a xlink:href="atlas.html#Java-HexSignificand"><text x="119.5" y="44">HexSignificand</text><text x="119.5" y="44">HexSignificand</text></a></g><path d="M189.0 40h10" /><path d="M199.0 40h10" /><g class="non-terminal ">
+<path d="M209.0 40h0.0" /><path d="M348.0 40h0.0" /><rect height="22" width="139" x="209" y="29"></rect><a xlink:href="atlas.html#Java-BinaryExponent"><text x="278.5" y="44">BinaryExponent</text><text x="278.5" y="44">BinaryExponent</text></a></g><path d="M348.0 40h10" /><g>
+<path d="M358.0 40h0.0" /><path d="M545.5 40h0.0" /><path d="M358.0 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M378.0 20h147.5" /></g><path d="M525.5 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M358.0 40h20" /><g class="non-terminal ">
+<path d="M378.0 40h0.0" /><path d="M525.5 40h0.0" /><rect height="22" width="147.5" x="378" y="29"></rect><a xlink:href="atlas.html#Java-FloatTypeSuffix"><text x="451.75" y="44">FloatTypeSuffix</text><text x="451.75" y="44">FloatTypeSuffix</text></a></g><path d="M525.5 40h20" /></g></g><path d="M545.5 40h10" /><path d="M 555.5 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexadecimalFloatingPointLiteral : HexSignificand BinaryExponent FloatTypeSuffix ?;</pre></article>
+<article id="Java-HexSignificand"><h3>HexSignificand</h3>
+<svg class="railroad-diagram" height="110" viewBox="0 0 558.0 110" width="558.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 30v20m10 -20v20m-10 -10h20" /></g><g>
+<path d="M40 40h0.0" /><path d="M518.0 40h0.0" /><path d="M40.0 40h20" /><g>
+<path d="M60.0 40h118.75" /><path d="M379.25 40h118.75" /><g class="non-terminal ">
+<path d="M178.75 40h0.0" /><path d="M283.75 40h0.0" /><rect height="22" width="105" x="178.75" y="29"></rect><a xlink:href="atlas.html#Java-HexNumeral"><text x="231.25" y="44">HexNumeral</text><text x="231.25" y="44">HexNumeral</text></a></g><path d="M283.75 40h10" /><g>
+<path d="M293.75 40h0.0" /><path d="M379.25 40h0.0" /><path d="M293.75 40a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M313.75 20h45.5" /></g><path d="M359.25 20a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M293.75 40h20" /><g class="terminal ">
+<path d="M313.75 40h0.0" /><path d="M359.25 40h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="313.75" y="29"></rect><text x="336.5" y="44">&apos;.&apos;</text></g><path d="M359.25 40h20" /></g></g><path d="M498.0 40h20" /><path d="M40.0 40a10 10 0 0 1 10 10v19a10 10 0 0 0 10 10" /><g>
+<path d="M60.0 79h0.0" /><path d="M498.0 79h0.0" /><g class="terminal ">
+<path d="M60.0 79h0.0" /><path d="M105.5 79h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="60" y="68"></rect><text x="82.75" y="83">&apos;0&apos;</text></g><path d="M105.5 79h10" /><path d="M115.5 79h10" /><g class="terminal ">
+<path d="M125.5 79h0.0" /><path d="M179.5 79h0.0" /><rect height="22" rx="10" ry="10" width="54" x="125.5" y="68"></rect><text x="152.5" y="83">[xX]</text></g><path d="M179.5 79h10" /><g>
+<path d="M189.5 79h0.0" /><path d="M326.0 79h0.0" /><path d="M189.5 79a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10" /><g>
+<path d="M209.5 59h96.5" /></g><path d="M306.0 59a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10" /><path d="M189.5 79h20" /><g class="non-terminal ">
+<path d="M209.5 79h0.0" /><path d="M306.0 79h0.0" /><rect height="22" width="96.5" x="209.5" y="68"></rect><a xlink:href="atlas.html#Java-HexDigits"><text x="257.75" y="83">HexDigits</text><text x="257.75" y="83">HexDigits</text></a></g><path d="M306.0 79h20" /></g><path d="M326.0 79h10" /><g class="terminal ">
+<path d="M336.0 79h0.0" /><path d="M381.5 79h0.0" /><rect height="22" rx="10" ry="10" width="45.5" x="336" y="68"></rect><text x="358.75" y="83">&apos;.&apos;</text></g><path d="M381.5 79h10" /><path d="M391.5 79h10" /><g class="non-terminal ">
+<path d="M401.5 79h0.0" /><path d="M498.0 79h0.0" /><rect height="22" width="96.5" x="401.5" y="68"></rect><a xlink:href="atlas.html#Java-HexDigits"><text x="449.75" y="83">HexDigits</text><text x="449.75" y="83">HexDigits</text></a></g></g><path d="M498.0 79a10 10 0 0 0 10 -10v-19a10 10 0 0 1 10 -10" /></g><path d="M 518.0 40 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>HexSignificand : HexNumeral &#x27;.&#x27; ? | &#x27;0&#x27; [xX] HexDigits ? &#x27;.&#x27; HexDigits;</pre></article>
+<article id="Java-BinaryExponent"><h3>BinaryExponent</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 466.0 62" width="466.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g>
+<path d="M50 31h0.0" /><path d="M416.0 31h0.0" /><g class="non-terminal ">
+<path d="M50.0 31h0.0" /><path d="M265.5 31h0.0" /><rect height="22" width="215.5" x="50" y="20"></rect><a xlink:href="atlas.html#Java-BinaryExponentIndicator"><text x="157.75" y="35">BinaryExponentIndicator</text><text x="157.75" y="35">BinaryExponentIndicator</text></a></g><path d="M265.5 31h10" /><path d="M275.5 31h10" /><g class="non-terminal ">
+<path d="M285.5 31h0.0" /><path d="M416.0 31h0.0" /><rect height="22" width="130.5" x="285.5" y="20"></rect><a xlink:href="atlas.html#Java-SignedInteger"><text x="350.75" y="35">SignedInteger</text><text x="350.75" y="35">SignedInteger</text></a></g></g><path d="M416.0 31h10" /><path d="M 426.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>BinaryExponent : BinaryExponentIndicator SignedInteger;</pre></article>
+<article id="Java-BinaryExponentIndicator"><h3>BinaryExponentIndicator</h3>
+<svg class="railroad-diagram" height="62" viewBox="0 0 154.0 62" width="154.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g transform="translate(.5 .5)">
+<g>
+<path d="M20 21v20m10 -20v20m-10 -10h20" /></g><path d="M40 31h10" /><g class="terminal ">
+<path d="M50 31h0.0" /><path d="M104.0 31h0.0" /><rect height="22" rx="10" ry="10" width="54" x="50" y="20"></rect><text x="77" y="35">[pP]</text></g><path d="M104.0 31h10" /><path d="M 114.0 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path></g><style>/* <![CDATA[ */
+	svg.railroad-diagram {
+		background-color:hsl(30,20%,95%);
+	}
+	svg.railroad-diagram path {
+		stroke-width:3;
+		stroke:black;
+		fill:rgba(0,0,0,0);
+	}
+	svg.railroad-diagram text {
+		font:bold 14px monospace;
+		text-anchor:middle;
+	}
+	svg.railroad-diagram text.label{
+		text-anchor:start;
+	}
+	svg.railroad-diagram text.comment{
+		font:italic 12px monospace;
+	}
+	svg.railroad-diagram rect{
+		stroke-width:3;
+		stroke:black;
+		fill:hsl(120,100%,90%);
+	}
+	svg.railroad-diagram rect.group-box {
+		stroke: gray;
+		stroke-dasharray: 10 5;
+		fill: none;
+	}
+
+/* ]]> */
+</style></svg>
+<pre>BinaryExponentIndicator : [pP];</pre></article>
+</html>

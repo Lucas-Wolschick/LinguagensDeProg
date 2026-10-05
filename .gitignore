@@ -1,3 +1,11 @@
 .qodo
 .embold/vscode-logs.log
 .embold/issues.db
+
+# Ferramentas e saídas locais (as evidências em docs/ são versionadas).
+build/
+.venv/
+__pycache__/
+*.pyc
+*.class
+*.jar

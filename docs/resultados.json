@@ -1,0 +1,2974 @@
+{
+  "antlr": "4.13.2",
+  "jar_sha256": "eae2dfa119a64327444672aff63e9ec35a20180dc5b8090b7a6ab85125df4d76",
+  "source_commit": "25ad11e4ff672b1eca69d6eeff109ce11bbb663d",
+  "results": [
+    {
+      "id": "C01",
+      "language": "C",
+      "rule": "StringLiteral",
+      "input": "u8\"Olá, mundo!\"",
+      "accepted": true,
+      "reason": "Prefixo u8 permitido antes das aspas.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "C01:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "u8\"Olá, mundo!\"",
+            "start": 0,
+            "stop": 14,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 15,
+            "stop": 14,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "C01:full",
+        "tokens": [
+          {
+            "type": "StringLiteral",
+            "text": "u8\"Olá, mundo!\"",
+            "start": 0,
+            "stop": 14,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 15,
+            "stop": 14,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C02",
+      "language": "C",
+      "rule": "StringLiteral",
+      "input": "\"linha\\x41\"",
+      "accepted": true,
+      "reason": "Escape hexadecimal com um ou mais dígitos hexadecimais.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "C02:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "\"linha\\x41\"",
+            "start": 0,
+            "stop": 10,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 11,
+            "stop": 10,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "C02:full",
+        "tokens": [
+          {
+            "type": "StringLiteral",
+            "text": "\"linha\\x41\"",
+            "start": 0,
+            "stop": 10,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 11,
+            "stop": 10,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C03",
+      "language": "C",
+      "rule": "StringLiteral",
+      "input": "\"texto\\q\"",
+      "accepted": false,
+      "reason": "Não existe escape \\q: o lexer informa erro léxico.",
+      "group": "principal",
+      "actual": false,
+      "isolated": {
+        "id": "C03:isolated",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"texto\\q'"
+          },
+          {
+            "line": 1,
+            "column": 8,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C03:full",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"texto\\q'"
+          },
+          {
+            "line": 1,
+            "column": 8,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C04",
+      "language": "C",
+      "rule": "StringLiteral",
+      "input": "\"sem fechamento",
+      "accepted": false,
+      "reason": "Falta a aspa final: nenhum literal completo.",
+      "group": "principal",
+      "actual": false,
+      "isolated": {
+        "id": "C04:isolated",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 15,
+            "stop": 14,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"sem fechamento'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C04:full",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 15,
+            "stop": 14,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"sem fechamento'"
+          }
+        ]
+      }
+    },
+    {
+      "id": "J05",
+      "language": "Java",
+      "rule": "StringLiteral",
+      "input": "\"Olá\\nmundo\"",
+      "accepted": true,
+      "reason": "A sequência barra+n é um escape permitido, não uma quebra física de linha.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "J05:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "\"Olá\\nmundo\"",
+            "start": 0,
+            "stop": 11,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 12,
+            "stop": 11,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "J05:full",
+        "tokens": [
+          {
+            "type": "StringLiteral",
+            "text": "\"Olá\\nmundo\"",
+            "start": 0,
+            "stop": 11,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 12,
+            "stop": 11,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J06",
+      "language": "Java",
+      "rule": "StringLiteral",
+      "input": "\"valor\\u0041\"",
+      "accepted": true,
+      "reason": "A gramática inclui UnicodeEscape no próprio lexer.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "J06:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "\"valor\\u0041\"",
+            "start": 0,
+            "stop": 12,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 13,
+            "stop": 12,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "J06:full",
+        "tokens": [
+          {
+            "type": "StringLiteral",
+            "text": "\"valor\\u0041\"",
+            "start": 0,
+            "stop": 12,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 13,
+            "stop": 12,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J07",
+      "language": "Java",
+      "rule": "StringLiteral",
+      "input": "u8\"texto\"",
+      "accepted": false,
+      "reason": "O prefixo vira Identifier e o restante StringLiteral; não há um único literal.",
+      "group": "principal",
+      "full_types": [
+        "Identifier",
+        "StringLiteral"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "J07:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "\"texto\"",
+            "start": 2,
+            "stop": 8,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: 'u'"
+          },
+          {
+            "line": 1,
+            "column": 1,
+            "message": "token recognition error at: '8'"
+          }
+        ]
+      },
+      "full": {
+        "id": "J07:full",
+        "tokens": [
+          {
+            "type": "Identifier",
+            "text": "u8",
+            "start": 0,
+            "stop": 1,
+            "channel": 0
+          },
+          {
+            "type": "StringLiteral",
+            "text": "\"texto\"",
+            "start": 2,
+            "stop": 8,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J08",
+      "language": "Java",
+      "rule": "StringLiteral",
+      "input": "\"texto\\x41\"",
+      "accepted": false,
+      "reason": "Escape hexadecimal \\x não é alternativa desta regra Java.",
+      "group": "principal",
+      "actual": false,
+      "isolated": {
+        "id": "J08:isolated",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 11,
+            "stop": 10,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"texto\\x'"
+          },
+          {
+            "line": 1,
+            "column": 8,
+            "message": "token recognition error at: '4'"
+          },
+          {
+            "line": 1,
+            "column": 9,
+            "message": "token recognition error at: '1'"
+          },
+          {
+            "line": 1,
+            "column": 10,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      },
+      "full": {
+        "id": "J08:full",
+        "tokens": [
+          {
+            "type": "IntegerLiteral",
+            "text": "41",
+            "start": 8,
+            "stop": 9,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 11,
+            "stop": 10,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"texto\\x'"
+          },
+          {
+            "line": 1,
+            "column": 10,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C09",
+      "language": "C",
+      "rule": "IntegerConstant",
+      "input": "0xCAFEuLL",
+      "accepted": true,
+      "reason": "Inteiro hexadecimal com sufixo unsigned long long.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "C09:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "0xCAFEuLL",
+            "start": 0,
+            "stop": 8,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "C09:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "0xCAFEuLL",
+            "start": 0,
+            "stop": 8,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C10",
+      "language": "C",
+      "rule": "IntegerConstant",
+      "input": "0b101101",
+      "accepted": true,
+      "reason": "Esta versão do lexer C inclui explicitamente BinaryConstant.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "C10:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "0b101101",
+            "start": 0,
+            "stop": 7,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 8,
+            "stop": 7,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "C10:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "0b101101",
+            "start": 0,
+            "stop": 7,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 8,
+            "stop": 7,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C11",
+      "language": "C",
+      "rule": "IntegerConstant",
+      "input": "10_000",
+      "accepted": false,
+      "reason": "Sublinhado não pertence aos numerais desta gramática C.",
+      "group": "principal",
+      "full_types": [
+        "Constant",
+        "Identifier"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C11:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "10",
+            "start": 0,
+            "stop": 1,
+            "channel": 0
+          },
+          {
+            "type": "Selected",
+            "text": "000",
+            "start": 3,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 2,
+            "message": "token recognition error at: '_'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C11:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "10",
+            "start": 0,
+            "stop": 1,
+            "channel": 0
+          },
+          {
+            "type": "Identifier",
+            "text": "_000",
+            "start": 2,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C12",
+      "language": "C",
+      "rule": "IntegerConstant",
+      "input": "12345lL",
+      "accepted": false,
+      "reason": "LongLongSuffix admite ll ou LL, não a mistura lL.",
+      "group": "principal",
+      "full_types": [
+        "Constant",
+        "Identifier"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C12:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "12345l",
+            "start": 0,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 7,
+            "stop": 6,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 6,
+            "message": "token recognition error at: 'L'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C12:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "12345l",
+            "start": 0,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "Identifier",
+            "text": "L",
+            "start": 6,
+            "stop": 6,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 7,
+            "stop": 6,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J13",
+      "language": "Java",
+      "rule": "IntegerLiteral",
+      "input": "10_000L",
+      "accepted": true,
+      "reason": "Separador interno entre dígitos e sufixo long.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "J13:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "10_000L",
+            "start": 0,
+            "stop": 6,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 7,
+            "stop": 6,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "J13:full",
+        "tokens": [
+          {
+            "type": "IntegerLiteral",
+            "text": "10_000L",
+            "start": 0,
+            "stop": 6,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 7,
+            "stop": 6,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J14",
+      "language": "Java",
+      "rule": "IntegerLiteral",
+      "input": "0b1010_0101",
+      "accepted": true,
+      "reason": "Base binária com separador interno.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "J14:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "0b1010_0101",
+            "start": 0,
+            "stop": 10,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 11,
+            "stop": 10,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "J14:full",
+        "tokens": [
+          {
+            "type": "IntegerLiteral",
+            "text": "0b1010_0101",
+            "start": 0,
+            "stop": 10,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 11,
+            "stop": 10,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J15",
+      "language": "Java",
+      "rule": "IntegerLiteral",
+      "input": "12345UL",
+      "accepted": false,
+      "reason": "Java não possui sufixo unsigned; UL vira Identifier.",
+      "group": "principal",
+      "full_types": [
+        "IntegerLiteral",
+        "Identifier"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "J15:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "12345",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 7,
+            "stop": 6,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 5,
+            "message": "token recognition error at: 'U'"
+          },
+          {
+            "line": 1,
+            "column": 6,
+            "message": "token recognition error at: 'L'"
+          }
+        ]
+      },
+      "full": {
+        "id": "J15:full",
+        "tokens": [
+          {
+            "type": "IntegerLiteral",
+            "text": "12345",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "Identifier",
+            "text": "UL",
+            "start": 5,
+            "stop": 6,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 7,
+            "stop": 6,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J16",
+      "language": "Java",
+      "rule": "IntegerLiteral",
+      "input": "01289",
+      "accepted": false,
+      "reason": "O prefixo octal 012 e o decimal 89 viram tokens separados.",
+      "group": "principal",
+      "full_types": [
+        "IntegerLiteral",
+        "IntegerLiteral"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "J16:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "012",
+            "start": 0,
+            "stop": 2,
+            "channel": 0
+          },
+          {
+            "type": "Selected",
+            "text": "89",
+            "start": 3,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "J16:full",
+        "tokens": [
+          {
+            "type": "IntegerLiteral",
+            "text": "012",
+            "start": 0,
+            "stop": 2,
+            "channel": 0
+          },
+          {
+            "type": "IntegerLiteral",
+            "text": "89",
+            "start": 3,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C17",
+      "language": "C",
+      "rule": "FloatingConstant",
+      "input": "12.50e-03L",
+      "accepted": true,
+      "reason": "Fração decimal, expoente com sinal e sufixo long double.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "C17:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "12.50e-03L",
+            "start": 0,
+            "stop": 9,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 10,
+            "stop": 9,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "C17:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "12.50e-03L",
+            "start": 0,
+            "stop": 9,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 10,
+            "stop": 9,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C18",
+      "language": "C",
+      "rule": "FloatingConstant",
+      "input": "0x1.Ap+4f",
+      "accepted": true,
+      "reason": "Real hexadecimal exige expoente binário p/P; aceita sufixo f.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "C18:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "0x1.Ap+4f",
+            "start": 0,
+            "stop": 8,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "C18:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "0x1.Ap+4f",
+            "start": 0,
+            "stop": 8,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C19",
+      "language": "C",
+      "rule": "FloatingConstant",
+      "input": "10_000.50",
+      "accepted": false,
+      "reason": "Sublinhado divide a entrada em Constant, Identifier e Constant.",
+      "group": "principal",
+      "full_types": [
+        "Constant",
+        "Identifier",
+        "Constant"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C19:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "000.50",
+            "start": 3,
+            "stop": 8,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '10_'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C19:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "10",
+            "start": 0,
+            "stop": 1,
+            "channel": 0
+          },
+          {
+            "type": "Identifier",
+            "text": "_000",
+            "start": 2,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "Constant",
+            "text": ".50",
+            "start": 6,
+            "stop": 8,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C20",
+      "language": "C",
+      "rule": "FloatingConstant",
+      "input": "12.5e+",
+      "accepted": false,
+      "reason": "O expoente precisa de dígitos após o sinal; a entrada é tokenizada em partes.",
+      "group": "principal",
+      "full_types": [
+        "Constant",
+        "Identifier",
+        "Plus"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C20:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "12.5",
+            "start": 0,
+            "stop": 3,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 4,
+            "message": "token recognition error at: 'e'"
+          },
+          {
+            "line": 1,
+            "column": 5,
+            "message": "token recognition error at: '+'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C20:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "12.5",
+            "start": 0,
+            "stop": 3,
+            "channel": 0
+          },
+          {
+            "type": "Identifier",
+            "text": "e",
+            "start": 4,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "Plus",
+            "text": "+",
+            "start": 5,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J21",
+      "language": "Java",
+      "rule": "FloatingPointLiteral",
+      "input": "10_000.50D",
+      "accepted": true,
+      "reason": "Separador interno e sufixo double aceitos.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "J21:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "10_000.50D",
+            "start": 0,
+            "stop": 9,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 10,
+            "stop": 9,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "J21:full",
+        "tokens": [
+          {
+            "type": "FloatingPointLiteral",
+            "text": "10_000.50D",
+            "start": 0,
+            "stop": 9,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 10,
+            "stop": 9,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J22",
+      "language": "Java",
+      "rule": "FloatingPointLiteral",
+      "input": "0x1.Ap+4f",
+      "accepted": true,
+      "reason": "Mesma estrutura hexadecimal de C neste exemplo.",
+      "group": "principal",
+      "actual": true,
+      "isolated": {
+        "id": "J22:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "0x1.Ap+4f",
+            "start": 0,
+            "stop": 8,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "J22:full",
+        "tokens": [
+          {
+            "type": "FloatingPointLiteral",
+            "text": "0x1.Ap+4f",
+            "start": 0,
+            "stop": 8,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 9,
+            "stop": 8,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J23",
+      "language": "Java",
+      "rule": "FloatingPointLiteral",
+      "input": "12.50L",
+      "accepted": false,
+      "reason": "L é sufixo inteiro, não sufixo de ponto flutuante Java.",
+      "group": "principal",
+      "full_types": [
+        "FloatingPointLiteral",
+        "Identifier"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "J23:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "12.50",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 5,
+            "message": "token recognition error at: 'L'"
+          }
+        ]
+      },
+      "full": {
+        "id": "J23:full",
+        "tokens": [
+          {
+            "type": "FloatingPointLiteral",
+            "text": "12.50",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "Identifier",
+            "text": "L",
+            "start": 5,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J24",
+      "language": "Java",
+      "rule": "FloatingPointLiteral",
+      "input": "0x1.8",
+      "accepted": false,
+      "reason": "Falta o expoente binário obrigatório p/P.",
+      "group": "principal",
+      "full_types": [
+        "IntegerLiteral",
+        "FloatingPointLiteral"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "J24:isolated",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '0x1.8'"
+          }
+        ]
+      },
+      "full": {
+        "id": "J24:full",
+        "tokens": [
+          {
+            "type": "IntegerLiteral",
+            "text": "0x1",
+            "start": 0,
+            "stop": 2,
+            "channel": 0
+          },
+          {
+            "type": "FloatingPointLiteral",
+            "text": ".8",
+            "start": 3,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C25",
+      "language": "C",
+      "rule": "IntegerConstant",
+      "input": "01289",
+      "accepted": false,
+      "reason": "DigitSequence pode consumir todos os dígitos, mas isso não comprova IntegerConstant.",
+      "group": "complementar",
+      "full_types": [
+        "DigitSequence"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C25:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "012",
+            "start": 0,
+            "stop": 2,
+            "channel": 0
+          },
+          {
+            "type": "Selected",
+            "text": "89",
+            "start": 3,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "C25:full",
+        "tokens": [
+          {
+            "type": "DigitSequence",
+            "text": "01289",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C26",
+      "language": "C",
+      "rule": "IntegerConstant",
+      "input": "0b1010L",
+      "accepted": false,
+      "reason": "BinaryConstant não tem IntegerSuffix nesta versão.",
+      "group": "complementar",
+      "full_types": [
+        "Constant",
+        "Identifier"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C26:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "0b1010",
+            "start": 0,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 7,
+            "stop": 6,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 6,
+            "message": "token recognition error at: 'L'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C26:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "0b1010",
+            "start": 0,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "Identifier",
+            "text": "L",
+            "start": 6,
+            "stop": 6,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 7,
+            "stop": 6,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C27",
+      "language": "C",
+      "rule": "FloatingConstant",
+      "input": "12345f",
+      "accepted": false,
+      "reason": "Em C, apenas dígitos e f não bastam para formar real.",
+      "group": "complementar",
+      "full_types": [
+        "Constant",
+        "Identifier"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C27:isolated",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '12345f'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C27:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "12345",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "Identifier",
+            "text": "f",
+            "start": 5,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J28",
+      "language": "Java",
+      "rule": "FloatingPointLiteral",
+      "input": "12345f",
+      "accepted": true,
+      "reason": "Java admite Digits FloatTypeSuffix, sem ponto ou expoente.",
+      "group": "complementar",
+      "actual": true,
+      "isolated": {
+        "id": "J28:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "12345f",
+            "start": 0,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "J28:full",
+        "tokens": [
+          {
+            "type": "FloatingPointLiteral",
+            "text": "12345f",
+            "start": 0,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C29",
+      "language": "C",
+      "rule": "IntegerConstant",
+      "input": "12345.0",
+      "accepted": false,
+      "reason": "Constant único pode ser real; a sonda do fragmento inteiro rejeita.",
+      "group": "complementar",
+      "full_types": [
+        "Constant"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C29:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "12345",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "Selected",
+            "text": "0",
+            "start": 6,
+            "stop": 6,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 7,
+            "stop": 6,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 5,
+            "message": "token recognition error at: '.'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C29:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "12345.0",
+            "start": 0,
+            "stop": 6,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 7,
+            "stop": 6,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C30",
+      "language": "C",
+      "rule": "FloatingConstant",
+      "input": "12345",
+      "accepted": false,
+      "reason": "Constant único pode ser inteiro; a sonda de real rejeita.",
+      "group": "complementar",
+      "full_types": [
+        "Constant"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C30:isolated",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '12345'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C30:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "12345",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J31",
+      "language": "Java",
+      "rule": "IntegerLiteral",
+      "input": "12345_",
+      "accepted": false,
+      "reason": "Sublinhado final não faz parte do numeral.",
+      "group": "complementar",
+      "full_types": [
+        "IntegerLiteral",
+        "UNDER_SCORE"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "J31:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "12345",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 5,
+            "message": "token recognition error at: '_'"
+          }
+        ]
+      },
+      "full": {
+        "id": "J31:full",
+        "tokens": [
+          {
+            "type": "IntegerLiteral",
+            "text": "12345",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "UNDER_SCORE",
+            "text": "_",
+            "start": 5,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J32",
+      "language": "Java",
+      "rule": "IntegerLiteral",
+      "input": "0x_FF",
+      "accepted": false,
+      "reason": "Sublinhado logo após o prefixo hexadecimal não é permitido.",
+      "group": "complementar",
+      "full_types": [
+        "IntegerLiteral",
+        "Identifier"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "J32:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "0",
+            "start": 0,
+            "stop": 0,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 1,
+            "message": "token recognition error at: 'x'"
+          },
+          {
+            "line": 1,
+            "column": 2,
+            "message": "token recognition error at: '_'"
+          },
+          {
+            "line": 1,
+            "column": 3,
+            "message": "token recognition error at: 'F'"
+          },
+          {
+            "line": 1,
+            "column": 4,
+            "message": "token recognition error at: 'F'"
+          }
+        ]
+      },
+      "full": {
+        "id": "J32:full",
+        "tokens": [
+          {
+            "type": "IntegerLiteral",
+            "text": "0",
+            "start": 0,
+            "stop": 0,
+            "channel": 0
+          },
+          {
+            "type": "Identifier",
+            "text": "x_FF",
+            "start": 1,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J33",
+      "language": "Java",
+      "rule": "IntegerLiteral",
+      "input": "1__000",
+      "accepted": true,
+      "reason": "Múltiplos sublinhados internos são admitidos.",
+      "group": "complementar",
+      "actual": true,
+      "isolated": {
+        "id": "J33:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "1__000",
+            "start": 0,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "J33:full",
+        "tokens": [
+          {
+            "type": "IntegerLiteral",
+            "text": "1__000",
+            "start": 0,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C34",
+      "language": "C",
+      "rule": "StringLiteral",
+      "input": "\"linha\\\nseguinte\"",
+      "accepted": true,
+      "reason": "SChar admite barra seguida de quebra física LF.",
+      "group": "complementar",
+      "actual": true,
+      "isolated": {
+        "id": "C34:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "\"linha\\\nseguinte\"",
+            "start": 0,
+            "stop": 16,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 17,
+            "stop": 16,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "C34:full",
+        "tokens": [
+          {
+            "type": "StringLiteral",
+            "text": "\"linha\\\nseguinte\"",
+            "start": 0,
+            "stop": 16,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 17,
+            "stop": 16,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J35",
+      "language": "Java",
+      "rule": "StringLiteral",
+      "input": "\"linha\\\nseguinte\"",
+      "accepted": false,
+      "reason": "StringCharacter não admite continuação por barra e LF.",
+      "group": "complementar",
+      "actual": false,
+      "isolated": {
+        "id": "J35:isolated",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 17,
+            "stop": 16,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"linha\\\\n'"
+          },
+          {
+            "line": 2,
+            "column": 0,
+            "message": "token recognition error at: 's'"
+          },
+          {
+            "line": 2,
+            "column": 1,
+            "message": "token recognition error at: 'e'"
+          },
+          {
+            "line": 2,
+            "column": 2,
+            "message": "token recognition error at: 'g'"
+          },
+          {
+            "line": 2,
+            "column": 3,
+            "message": "token recognition error at: 'u'"
+          },
+          {
+            "line": 2,
+            "column": 4,
+            "message": "token recognition error at: 'i'"
+          },
+          {
+            "line": 2,
+            "column": 5,
+            "message": "token recognition error at: 'n'"
+          },
+          {
+            "line": 2,
+            "column": 6,
+            "message": "token recognition error at: 't'"
+          },
+          {
+            "line": 2,
+            "column": 7,
+            "message": "token recognition error at: 'e'"
+          },
+          {
+            "line": 2,
+            "column": 8,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      },
+      "full": {
+        "id": "J35:full",
+        "tokens": [
+          {
+            "type": "Identifier",
+            "text": "seguinte",
+            "start": 8,
+            "stop": 15,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 17,
+            "stop": 16,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"linha\\\\n'"
+          },
+          {
+            "line": 2,
+            "column": 8,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C36",
+      "language": "C",
+      "rule": "StringLiteral",
+      "input": "R\"texto\"",
+      "accepted": false,
+      "reason": "Esta gramática não tem raw string de C++.",
+      "group": "complementar",
+      "full_types": [
+        "Identifier",
+        "StringLiteral"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C36:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "\"texto\"",
+            "start": 1,
+            "stop": 7,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 8,
+            "stop": 7,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: 'R'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C36:full",
+        "tokens": [
+          {
+            "type": "Identifier",
+            "text": "R",
+            "start": 0,
+            "stop": 0,
+            "channel": 0
+          },
+          {
+            "type": "StringLiteral",
+            "text": "\"texto\"",
+            "start": 1,
+            "stop": 7,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 8,
+            "stop": 7,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C37",
+      "language": "C",
+      "rule": "StringLiteral",
+      "input": "\"linha\nseguinte\"",
+      "accepted": false,
+      "reason": "Quebra física sem barra é excluída de SChar.",
+      "group": "complementar",
+      "actual": false,
+      "isolated": {
+        "id": "C37:isolated",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 16,
+            "stop": 15,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"linha\\n'"
+          },
+          {
+            "line": 2,
+            "column": 0,
+            "message": "token recognition error at: 's'"
+          },
+          {
+            "line": 2,
+            "column": 1,
+            "message": "token recognition error at: 'e'"
+          },
+          {
+            "line": 2,
+            "column": 2,
+            "message": "token recognition error at: 'g'"
+          },
+          {
+            "line": 2,
+            "column": 3,
+            "message": "token recognition error at: 'ui'"
+          },
+          {
+            "line": 2,
+            "column": 5,
+            "message": "token recognition error at: 'n'"
+          },
+          {
+            "line": 2,
+            "column": 6,
+            "message": "token recognition error at: 't'"
+          },
+          {
+            "line": 2,
+            "column": 7,
+            "message": "token recognition error at: 'e'"
+          },
+          {
+            "line": 2,
+            "column": 8,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C37:full",
+        "tokens": [
+          {
+            "type": "Identifier",
+            "text": "seguinte",
+            "start": 7,
+            "stop": 14,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 16,
+            "stop": 15,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"linha\\n'"
+          },
+          {
+            "line": 2,
+            "column": 8,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      }
+    },
+    {
+      "id": "J38",
+      "language": "Java",
+      "rule": "StringLiteral",
+      "input": "\"linha\nseguinte\"",
+      "accepted": false,
+      "reason": "Quebra física sem barra é excluída de StringCharacter.",
+      "group": "complementar",
+      "actual": false,
+      "isolated": {
+        "id": "J38:isolated",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 16,
+            "stop": 15,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"linha\\n'"
+          },
+          {
+            "line": 2,
+            "column": 0,
+            "message": "token recognition error at: 's'"
+          },
+          {
+            "line": 2,
+            "column": 1,
+            "message": "token recognition error at: 'e'"
+          },
+          {
+            "line": 2,
+            "column": 2,
+            "message": "token recognition error at: 'g'"
+          },
+          {
+            "line": 2,
+            "column": 3,
+            "message": "token recognition error at: 'u'"
+          },
+          {
+            "line": 2,
+            "column": 4,
+            "message": "token recognition error at: 'i'"
+          },
+          {
+            "line": 2,
+            "column": 5,
+            "message": "token recognition error at: 'n'"
+          },
+          {
+            "line": 2,
+            "column": 6,
+            "message": "token recognition error at: 't'"
+          },
+          {
+            "line": 2,
+            "column": 7,
+            "message": "token recognition error at: 'e'"
+          },
+          {
+            "line": 2,
+            "column": 8,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      },
+      "full": {
+        "id": "J38:full",
+        "tokens": [
+          {
+            "type": "Identifier",
+            "text": "seguinte",
+            "start": 7,
+            "stop": 14,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 16,
+            "stop": 15,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"linha\\n'"
+          },
+          {
+            "line": 2,
+            "column": 8,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C39",
+      "language": "C",
+      "rule": "IntegerConstant",
+      "input": "12345 ",
+      "accepted": false,
+      "reason": "Espaço oculto ainda é entrada adicional; não é um único literal exato.",
+      "group": "complementar",
+      "full_types": [
+        "Constant",
+        "Whitespace"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C39:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "12345",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 5,
+            "message": "token recognition error at: ' '"
+          }
+        ]
+      },
+      "full": {
+        "id": "C39:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "12345",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "Whitespace",
+            "text": " ",
+            "start": 5,
+            "stop": 5,
+            "channel": 1
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J40",
+      "language": "Java",
+      "rule": "IntegerLiteral",
+      "input": "12345 ",
+      "accepted": false,
+      "reason": "WS é descartado, mas o token não cobre toda a entrada.",
+      "group": "complementar",
+      "full_types": [
+        "IntegerLiteral"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "J40:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "12345",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 5,
+            "message": "token recognition error at: ' '"
+          }
+        ]
+      },
+      "full": {
+        "id": "J40:full",
+        "tokens": [
+          {
+            "type": "IntegerLiteral",
+            "text": "12345",
+            "start": 0,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J41",
+      "language": "Java",
+      "rule": "IntegerLiteral",
+      "input": "-12345",
+      "accepted": false,
+      "reason": "Sinal unário é um token separado; não integra IntegerLiteral.",
+      "group": "complementar",
+      "full_types": [
+        "SUB",
+        "IntegerLiteral"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "J41:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "12345",
+            "start": 1,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '-'"
+          }
+        ]
+      },
+      "full": {
+        "id": "J41:full",
+        "tokens": [
+          {
+            "type": "SUB",
+            "text": "-",
+            "start": 0,
+            "stop": 0,
+            "channel": 0
+          },
+          {
+            "type": "IntegerLiteral",
+            "text": "12345",
+            "start": 1,
+            "stop": 5,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 6,
+            "stop": 5,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C42",
+      "language": "C",
+      "rule": "FloatingConstant",
+      "input": "0x1.8",
+      "accepted": false,
+      "reason": "Real hexadecimal sem expoente binário também é rejeitado em C.",
+      "group": "complementar",
+      "full_types": [
+        "Constant",
+        "Constant"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "C42:isolated",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '0x1.8'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C42:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "0x1",
+            "start": 0,
+            "stop": 2,
+            "channel": 0
+          },
+          {
+            "type": "Constant",
+            "text": ".8",
+            "start": 3,
+            "stop": 4,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 5,
+            "stop": 4,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C43",
+      "language": "C",
+      "rule": "StringLiteral",
+      "input": "\"valor\\u0041\"",
+      "accepted": true,
+      "reason": "UniversalCharacterName aceita \\u seguido de quatro hexadecimais.",
+      "group": "complementar",
+      "actual": true,
+      "isolated": {
+        "id": "C43:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "\"valor\\u0041\"",
+            "start": 0,
+            "stop": 12,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 13,
+            "stop": 12,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "C43:full",
+        "tokens": [
+          {
+            "type": "StringLiteral",
+            "text": "\"valor\\u0041\"",
+            "start": 0,
+            "stop": 12,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 13,
+            "stop": 12,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "J44",
+      "language": "Java",
+      "rule": "StringLiteral",
+      "input": "\"valor\\uu0041\"",
+      "accepted": true,
+      "reason": "UnicodeEscape Java aceita uma ou mais letras u.",
+      "group": "complementar",
+      "actual": true,
+      "isolated": {
+        "id": "J44:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "\"valor\\uu0041\"",
+            "start": 0,
+            "stop": 13,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 14,
+            "stop": 13,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      },
+      "full": {
+        "id": "J44:full",
+        "tokens": [
+          {
+            "type": "StringLiteral",
+            "text": "\"valor\\uu0041\"",
+            "start": 0,
+            "stop": 13,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 14,
+            "stop": 13,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "id": "C45",
+      "language": "C",
+      "rule": "StringLiteral",
+      "input": "\"valor\\uu0041\"",
+      "accepted": false,
+      "reason": "UniversalCharacterName C exige apenas uma letra u.",
+      "group": "complementar",
+      "actual": false,
+      "isolated": {
+        "id": "C45:isolated",
+        "tokens": [
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 14,
+            "stop": 13,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"valor\\uu'"
+          },
+          {
+            "line": 1,
+            "column": 9,
+            "message": "token recognition error at: '0'"
+          },
+          {
+            "line": 1,
+            "column": 10,
+            "message": "token recognition error at: '0'"
+          },
+          {
+            "line": 1,
+            "column": 11,
+            "message": "token recognition error at: '4'"
+          },
+          {
+            "line": 1,
+            "column": 12,
+            "message": "token recognition error at: '1'"
+          },
+          {
+            "line": 1,
+            "column": 13,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      },
+      "full": {
+        "id": "C45:full",
+        "tokens": [
+          {
+            "type": "Constant",
+            "text": "0041",
+            "start": 9,
+            "stop": 12,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 14,
+            "stop": 13,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 0,
+            "message": "token recognition error at: '\"valor\\uu'"
+          },
+          {
+            "line": 1,
+            "column": 13,
+            "message": "token recognition error at: '\"'"
+          }
+        ]
+      }
+    },
+    {
+      "id": "J46",
+      "language": "Java",
+      "rule": "StringLiteral",
+      "input": "\"texto\"/*comentário*/",
+      "accepted": false,
+      "reason": "Um comentário oculto não pode ser ignorado no critério de literal exato.",
+      "group": "complementar",
+      "full_types": [
+        "StringLiteral",
+        "COMMENT"
+      ],
+      "actual": false,
+      "isolated": {
+        "id": "J46:isolated",
+        "tokens": [
+          {
+            "type": "Selected",
+            "text": "\"texto\"",
+            "start": 0,
+            "stop": 6,
+            "channel": 0
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 21,
+            "stop": 20,
+            "channel": 0
+          }
+        ],
+        "errors": [
+          {
+            "line": 1,
+            "column": 7,
+            "message": "token recognition error at: '/'"
+          },
+          {
+            "line": 1,
+            "column": 8,
+            "message": "token recognition error at: '*'"
+          },
+          {
+            "line": 1,
+            "column": 9,
+            "message": "token recognition error at: 'c'"
+          },
+          {
+            "line": 1,
+            "column": 10,
+            "message": "token recognition error at: 'o'"
+          },
+          {
+            "line": 1,
+            "column": 11,
+            "message": "token recognition error at: 'm'"
+          },
+          {
+            "line": 1,
+            "column": 12,
+            "message": "token recognition error at: 'e'"
+          },
+          {
+            "line": 1,
+            "column": 13,
+            "message": "token recognition error at: 'n'"
+          },
+          {
+            "line": 1,
+            "column": 14,
+            "message": "token recognition error at: 't'"
+          },
+          {
+            "line": 1,
+            "column": 15,
+            "message": "token recognition error at: 'á'"
+          },
+          {
+            "line": 1,
+            "column": 16,
+            "message": "token recognition error at: 'r'"
+          },
+          {
+            "line": 1,
+            "column": 17,
+            "message": "token recognition error at: 'i'"
+          },
+          {
+            "line": 1,
+            "column": 18,
+            "message": "token recognition error at: 'o'"
+          },
+          {
+            "line": 1,
+            "column": 19,
+            "message": "token recognition error at: '*'"
+          },
+          {
+            "line": 1,
+            "column": 20,
+            "message": "token recognition error at: '/'"
+          }
+        ]
+      },
+      "full": {
+        "id": "J46:full",
+        "tokens": [
+          {
+            "type": "StringLiteral",
+            "text": "\"texto\"",
+            "start": 0,
+            "stop": 6,
+            "channel": 0
+          },
+          {
+            "type": "COMMENT",
+            "text": "/*comentário*/",
+            "start": 7,
+            "stop": 20,
+            "channel": 1
+          },
+          {
+            "type": "EOF",
+            "text": "<EOF>",
+            "start": 21,
+            "stop": 20,
+            "channel": 0
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
