@@ -1,0 +1,7 @@
+Constant ::= IntegerConstant | FloatingConstant | CharacterConstant
+IntegerConstant ::= DecimalConstant IntegerSuffix? | OctalConstant IntegerSuffix? | HexadecimalConstant IntegerSuffix? | BinaryConstant
+BinaryConstant ::= '0' [bB] [0-1]+
+DecimalConstant ::= [1-9] [0-9]*
+OctalConstant ::= '0' [0-7]*
+HexadecimalConstant ::= '0' [xX] [0-9a-fA-F]+
+IntegerSuffix ::= [uU] [lL]? | [uU] ( 'll' | 'LL' ) | [lL] [uU]? | ( 'll' | 'LL' ) [uU]?

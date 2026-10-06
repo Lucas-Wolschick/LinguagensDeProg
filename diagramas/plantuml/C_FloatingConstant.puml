@@ -1,0 +1,11 @@
+@startebnf
+title C — Constant / FloatingConstant (REAL)
+FloatingConstant = DecimalFloatingConstant | HexadecimalFloatingConstant;
+DecimalFloatingConstant = FractionalConstant, [ExponentPart], [FloatingSuffix] | DigitSequence, ExponentPart, [FloatingSuffix];
+HexadecimalFloatingConstant = "0", ("x" | "X"), (HexadecimalFractionalConstant | HexadecimalDigitSequence), BinaryExponentPart, [FloatingSuffix];
+FractionalConstant = [DigitSequence], ".", DigitSequence | DigitSequence, ".";
+ExponentPart = ("e" | "E"), [("+" | "-")], DigitSequence;
+BinaryExponentPart = ("p" | "P"), [("+" | "-")], DigitSequence;
+DigitSequence = {? 0-9 ?}-;
+FloatingSuffix = "f" | "l" | "F" | "L";
+@endebnf

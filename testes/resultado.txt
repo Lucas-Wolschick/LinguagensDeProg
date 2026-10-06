@@ -1,0 +1,124 @@
+### C str1   input: u8"Olá, mundo!\n"
+    StringLiteral  u8"Olá, mundo!\n"
+### C str2   input: L"tab\there \x41\101"
+    StringLiteral  L"tab\there \x41\101"
+### C str3   input: "linha um \⏎linha dois"
+    StringLiteral  "linha um \
+linha dois"
+### C str-r1   input: "texto sem fim
+    line 1:0 token recognition error at: '"texto sem fim'
+### C str-r2   input: "quebra⏎no meio"
+    line 1:0 token recognition error at: '"quebra\n'
+    line 2:7 token recognition error at: '"'
+    Identifier  no
+    Identifier  meio
+### C str-r3   input: "escape \q inválido"
+    line 1:0 token recognition error at: '"escape \q'
+    line 1:14 token recognition error at: 'á'
+    line 1:19 token recognition error at: '"'
+    Identifier  inv
+    Identifier  lido
+### C str-r4   input: R"(raw string)"
+    Identifier  R
+    StringLiteral  "(raw string)"
+### J str1   input: "Olá, \"mundo\"\t\u0041"
+    StringLiteral  "Olá, \"mundo\"\t\u0041"
+### J str2   input: "octal \101 e \uuu0042"
+    StringLiteral  "octal \101 e \uuu0042"
+### J str-r1   input: "espaco\sJava15"
+    line 1:0 token recognition error at: '"espaco\s'
+    line 1:15 token recognition error at: '"'
+    Identifier  Java15
+### J str-r2   input: "texto sem fim
+    line 1:0 token recognition error at: '"texto sem fim'
+### J str-r3   input: u8"prefixo C"
+    Identifier  u8
+    StringLiteral  "prefixo C"
+### J tb-r   input: """⏎    Olá mundo⏎    """
+    line 1:2 token recognition error at: '"\n'
+    line 3:6 token recognition error at: '"'
+    StringLiteral  ""
+    Identifier  Olá
+    Identifier  mundo
+    StringLiteral  ""
+### J tb-ok   input: """⏎....."""
+    TextBlock  """
+....."""
+### C int1   input: 0x7FFFFFFFULL
+    Constant  0x7FFFFFFFULL
+### C int2   input: 1234567890lu
+    Constant  1234567890lu
+### C int3   input: 0b10100101
+    Constant  0b10100101
+### C int-r1   input: 01289
+    DigitSequence  01289
+### C int-r2   input: 1_000_000
+    Constant  1
+    Identifier  _000_000
+### C int-r3   input: 0b1010u
+    Constant  0b1010
+    Identifier  u
+### C int-r4   input: 100lL
+    Constant  100l
+    Identifier  L
+### J int1   input: 1_000_000L
+    IntegerLiteral  1_000_000L
+### J int2   input: 0x7FFF_FFFF
+    IntegerLiteral  0x7FFF_FFFF
+### J int3   input: 0b1010_0101
+    IntegerLiteral  0b1010_0101
+### J int-r1   input: 1_000_
+    IntegerLiteral  1_000
+    UNDER_SCORE  _
+### J int-r2   input: 01289
+    IntegerLiteral  012
+    IntegerLiteral  89
+### J int-r3   input: 100ULL
+    IntegerLiteral  100
+    Identifier  ULL
+### J int-r4   input: 0x_FFFF
+    IntegerLiteral  0
+    Identifier  x_FFFF
+### C real1   input: 6.022e+23L
+    Constant  6.022e+23L
+### C real2   input: 0x1.8p3f
+    Constant  0x1.8p3f
+### C real3   input: .5e-10F
+    Constant  .5e-10F
+### C real-r1   input: 10_000.00
+    Constant  10
+    Identifier  _000
+    Constant  .00
+### C real-r2   input: 0x1.8F
+    Constant  0x1
+    Constant  .8F
+### C real-r3   input: 1.5e+f
+    Constant  1.5
+    Identifier  e
+    Plus  +
+    Identifier  f
+### C real-r4   input: 1000f
+    Constant  1000
+    Identifier  f
+### J real1   input: 10_000.000_1
+    FloatingPointLiteral  10_000.000_1
+### J real2   input: 6.022e+23d
+    FloatingPointLiteral  6.022e+23d
+### J real3   input: 0x1.8p3f
+    FloatingPointLiteral  0x1.8p3f
+### J real4   input: 1000f
+    FloatingPointLiteral  1000f
+### J real-r1   input: 3.1415L
+    FloatingPointLiteral  3.1415
+    Identifier  L
+### J real-r2   input: 0x1.8F
+    IntegerLiteral  0x1
+    FloatingPointLiteral  .8F
+### J real-r3   input: 1.5e+f
+    FloatingPointLiteral  1.5
+    Identifier  e
+    ADD  +
+    Identifier  f
+### J real-r4   input: 1_000._5
+    FloatingPointLiteral  1_000.
+    Identifier  _5

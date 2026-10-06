@@ -1,0 +1,9 @@
+@startebnf
+title Java 20 — FloatingPointLiteral (REAL)
+FloatingPointLiteral = DecimalFloatingPointLiteral | HexadecimalFloatingPointLiteral;
+DecimalFloatingPointLiteral = Digits, ".", [Digits], [ExponentPart], [FloatTypeSuffix] | ".", Digits, [ExponentPart], [FloatTypeSuffix] | Digits, ExponentPart, [FloatTypeSuffix] | Digits, FloatTypeSuffix;
+ExponentPart = ("e" | "E"), [("+" | "-")], Digits;
+FloatTypeSuffix = "f" | "F" | "d" | "D";
+HexadecimalFloatingPointLiteral = HexSignificand, ("p" | "P"), [("+" | "-")], Digits, [FloatTypeSuffix];
+HexSignificand = HexNumeral, ["."] | "0", ("x" | "X"), [HexDigits], ".", HexDigits;
+@endebnf

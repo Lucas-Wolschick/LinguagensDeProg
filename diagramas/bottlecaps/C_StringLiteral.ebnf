@@ -1,0 +1,9 @@
+StringLiteral ::= EncodingPrefix? '"' SCharSequence? '"'
+EncodingPrefix ::= 'u8' | 'u' | 'U' | 'L'
+SCharSequence ::= SChar+
+SChar ::= [^"\#x0D#x0A] | EscapeSequence | '\' #x0A | '\' #x0D #x0A
+EscapeSequence ::= SimpleEscapeSequence | OctalEscapeSequence | HexadecimalEscapeSequence | UniversalCharacterName
+SimpleEscapeSequence ::= '\' ['"?abfnrtv\]
+OctalEscapeSequence ::= '\' OctalDigit OctalDigit? OctalDigit?
+HexadecimalEscapeSequence ::= '\x' HexadecimalDigit+
+UniversalCharacterName ::= '\u' HexQuad | '\U' HexQuad HexQuad

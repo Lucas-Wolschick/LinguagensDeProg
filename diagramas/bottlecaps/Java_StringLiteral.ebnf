@@ -1,0 +1,7 @@
+StringLiteral ::= '"' StringCharacters? '"'
+StringCharacters ::= StringCharacter+
+StringCharacter ::= [^"\#x0D#x0A] | EscapeSequence
+TextBlock ::= '"""' [ #x09]* [#x0A#x0D] [.#x0D#x08]* '"""'
+EscapeSequence ::= '\' [btnfr"'\] | OctalEscape | UnicodeEscape
+OctalEscape ::= '\' OctalDigit | '\' OctalDigit OctalDigit | '\' ZeroToThree OctalDigit OctalDigit
+UnicodeEscape ::= '\' 'u'+ HexDigit HexDigit HexDigit HexDigit

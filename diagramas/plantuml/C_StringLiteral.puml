@@ -1,0 +1,8 @@
+@startebnf
+title C — StringLiteral (TEXTO)
+StringLiteral = [EncodingPrefix], '"', [SCharSequence], '"';
+EncodingPrefix = "u8" | "u" | "U" | "L";
+SCharSequence = {SChar}-;
+SChar = ? qualquer caractere exceto aspas, barra, CR, LF ? | EscapeSequence | "\", ? LF ? | "\", ? CR ?, ? LF ?;
+EscapeSequence = "\", ? um de: aspa simples, aspa dupla, interrogacao, a b f n r t v, barra ? | "\", OctalDigit, [OctalDigit], [OctalDigit] | "\x", {HexadecimalDigit}- | "\u", HexQuad | "\U", HexQuad, HexQuad;
+@endebnf

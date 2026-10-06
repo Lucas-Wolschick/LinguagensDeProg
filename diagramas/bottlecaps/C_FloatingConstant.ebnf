@@ -1,0 +1,8 @@
+FloatingConstant ::= DecimalFloatingConstant | HexadecimalFloatingConstant
+DecimalFloatingConstant ::= FractionalConstant ExponentPart? FloatingSuffix? | DigitSequence ExponentPart FloatingSuffix?
+HexadecimalFloatingConstant ::= '0' [xX] ( HexadecimalFractionalConstant | HexadecimalDigitSequence ) BinaryExponentPart FloatingSuffix?
+FractionalConstant ::= DigitSequence? '.' DigitSequence | DigitSequence '.'
+ExponentPart ::= [eE] [+-]? DigitSequence
+BinaryExponentPart ::= [pP] [+-]? DigitSequence
+DigitSequence ::= [0-9]+
+FloatingSuffix ::= [flFL]

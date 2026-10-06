@@ -1,0 +1,9 @@
+@startebnf
+title Java 20 — StringLiteral e TextBlock (TEXTO)
+StringLiteral = '"', [StringCharacters], '"';
+StringCharacters = {StringCharacter}-;
+StringCharacter = ? qualquer caractere exceto aspas, barra, CR, LF ? | EscapeSequence;
+TextBlock = '"""', {? espaco ou TAB ?}, ? LF ou CR ?, {? ponto, CR ou backspace ?}, '"""';
+EscapeSequence = "\", ? um de b t n f r " ' \ ? | OctalEscape | "\", {"u"}-, HexDigit, HexDigit, HexDigit, HexDigit;
+OctalEscape = "\", OctalDigit | "\", OctalDigit, OctalDigit | "\", ZeroToThree, OctalDigit, OctalDigit;
+@endebnf

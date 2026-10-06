@@ -1,0 +1,6 @@
+FloatingPointLiteral ::= DecimalFloatingPointLiteral | HexadecimalFloatingPointLiteral
+DecimalFloatingPointLiteral ::= Digits '.' Digits? ExponentPart? FloatTypeSuffix? | '.' Digits ExponentPart? FloatTypeSuffix? | Digits ExponentPart FloatTypeSuffix? | Digits FloatTypeSuffix
+ExponentPart ::= [eE] [+-]? Digits
+FloatTypeSuffix ::= [fFdD]
+HexadecimalFloatingPointLiteral ::= HexSignificand [pP] [+-]? Digits FloatTypeSuffix?
+HexSignificand ::= HexNumeral '.'? | '0' [xX] HexDigits? '.' HexDigits

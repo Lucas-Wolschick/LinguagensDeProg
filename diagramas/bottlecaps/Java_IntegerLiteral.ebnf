@@ -1,0 +1,6 @@
+IntegerLiteral ::= ( DecimalNumeral | HexNumeral | OctalNumeral | BinaryNumeral ) [lL]?
+DecimalNumeral ::= '0' | [1-9] ( Digits? | '_'+ Digits )
+Digits ::= Digit ( ( Digit | '_' )* Digit )?
+HexNumeral ::= '0' [xX] HexDigit ( ( HexDigit | '_' )* HexDigit )?
+OctalNumeral ::= '0' '_'* OctalDigit ( ( OctalDigit | '_' )* OctalDigit )?
+BinaryNumeral ::= '0' [bB] BinaryDigit ( ( BinaryDigit | '_' )* BinaryDigit )?

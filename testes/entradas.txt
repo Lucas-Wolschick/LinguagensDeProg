@@ -1,0 +1,91 @@
+@@@ C str1
+u8"Olá, mundo!\n"
+@@@ C str2
+L"tab\there \x41\101"
+@@@ C str3
+"linha um \
+linha dois"
+@@@ C str-r1
+"texto sem fim
+@@@ C str-r2
+"quebra
+no meio"
+@@@ C str-r3
+"escape \q inválido"
+@@@ C str-r4
+R"(raw string)"
+@@@ J str1
+"Olá, \"mundo\"\t\u0041"
+@@@ J str2
+"octal \101 e \uuu0042"
+@@@ J str-r1
+"espaco\sJava15"
+@@@ J str-r2
+"texto sem fim
+@@@ J str-r3
+u8"prefixo C"
+@@@ J tb-r
+"""
+    Olá mundo
+    """
+@@@ J tb-ok
+"""
+....."""
+@@@ C int1
+0x7FFFFFFFULL
+@@@ C int2
+1234567890lu
+@@@ C int3
+0b10100101
+@@@ C int-r1
+01289
+@@@ C int-r2
+1_000_000
+@@@ C int-r3
+0b1010u
+@@@ C int-r4
+100lL
+@@@ J int1
+1_000_000L
+@@@ J int2
+0x7FFF_FFFF
+@@@ J int3
+0b1010_0101
+@@@ J int-r1
+1_000_
+@@@ J int-r2
+01289
+@@@ J int-r3
+100ULL
+@@@ J int-r4
+0x_FFFF
+@@@ C real1
+6.022e+23L
+@@@ C real2
+0x1.8p3f
+@@@ C real3
+.5e-10F
+@@@ C real-r1
+10_000.00
+@@@ C real-r2
+0x1.8F
+@@@ C real-r3
+1.5e+f
+@@@ C real-r4
+1000f
+@@@ J real1
+10_000.000_1
+@@@ J real2
+6.022e+23d
+@@@ J real3
+0x1.8p3f
+@@@ J real4
+1000f
+@@@ J real-r1
+3.1415L
+@@@ J real-r2
+0x1.8F
+@@@ J real-r3
+1.5e+f
+@@@ J real-r4
+1_000._5
